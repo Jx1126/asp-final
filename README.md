@@ -89,6 +89,10 @@ Alternatively, see the GitHub documentation on [creating a pull request](https:/
 ```
 npm run css
 ```
+2. Open a separate terminal and run the following:
+```powershell
+npm run start
+```
 
 <p align="right"><a href="#">Jump to top</a></p>
 
@@ -98,6 +102,7 @@ npm run css
 - [`NPM`](https://www.npmjs.com/) - Package manager
 - [`TailwindCSS`](https://tailwindcss.com/) - CSS framework
 - [`DaisyUI`](https://daisyui.com/) - Component library for TailwindCSS
+- [`Express`](https://expressjs.com/) - Web application framework
 
 ## Tools:
 - [`GitHub`](https://github.com/) - Developer platform.
