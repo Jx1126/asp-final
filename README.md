@@ -1,6 +1,6 @@
 <div id="header" align="center">
   <a href="https://github.com/Jx1126/asp-final">
-    <img src="./public/images/logo_gray.png" alt="FinanceForge Logo" height="128">
+    <img src="./public/logo_gray.png" alt="FinanceForge Logo" height="128">
   </a>
 
   <h3 align="center">FinanceForge</h3>
@@ -90,8 +90,8 @@ Alternatively, see the GitHub documentation on [creating a pull request](https:/
 npm run css
 ```
 2. Open a separate terminal and run the following:
-```powershell
-npm run start
+```
+npm run dev
 ```
 
 <p align="right"><a href="#">Jump to top</a></p>
@@ -102,7 +102,9 @@ npm run start
 - [`NPM`](https://www.npmjs.com/) - Package manager
 - [`TailwindCSS`](https://tailwindcss.com/) - CSS framework
 - [`DaisyUI`](https://daisyui.com/) - Component library for TailwindCSS
-- [`Express`](https://expressjs.com/) - Web application framework
+- [`Vite`](https://vitejs.dev/) - Local development server
+- [`React`](https://react.dev/) - Front-end Javascript library
+- [`Typescript`](https://www.typescriptlang.org/) - High-level programming language
 
 ## Tools:
 - [`GitHub`](https://github.com/) - Developer platform.
