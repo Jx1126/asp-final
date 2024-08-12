@@ -871,13 +871,13 @@ html {
   line-height: 2.25rem;
 }
 
-.font-bold {
-  font-weight: 700;
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
-.text-red-100 {
-  --tw-text-opacity: 1;
-  color: rgb(254 226 226 / var(--tw-text-opacity));
+.font-bold {
+  font-weight: 700;
 }
 
 .text-red-500 {
