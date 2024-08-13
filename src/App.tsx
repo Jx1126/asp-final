@@ -1,3 +1,5 @@
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 import Home from './components/home/Home';
 import Awareness from './components/awareness/Awareness';
 import Finance from './components/finance/Finance';
@@ -9,15 +11,19 @@ function App() {
   return (
     
     <Router>
+      
+      <Header />
+
       <Routes>
-
         <Route path="/" element={<Home />} />
-        <Route path="/awareness" element={<Awareness />} />
-        <Route path="/finance" element={<Finance />} />
-        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/scam-awareness" element={<Awareness />} />
+        <Route path="/finance-manager" element={<Finance />} />
+        <Route path="/jobs-wealth" element={<Jobs />} />
         <Route path="/articles" element={<Articles />} />
-
       </Routes>
+
+      <Footer />
+
     </Router>
     
   )
