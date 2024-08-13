@@ -6,10 +6,9 @@ interface Props {
 }
 
 const RatingCard = ({ star, message, avatar, username }: Props) => (
-  <div className="flex justify-center bg-slate-200 border-slate-300 max-w-72 border-2 shadow-inner rounded-lg">
+  <div className="flex justify-center bg-slate-200 border-slate-300 max-w-72 border-2 shadow-inner rounded-lg min-h-full">
 
     <div className="flex flex-col gap-3 my-5">
-
       <p>{star}</p>
       <p className="max-w-56 font-semibold">" {message} "</p>
 
@@ -22,7 +21,6 @@ const RatingCard = ({ star, message, avatar, username }: Props) => (
 
         <p className="font-semibold text-black/60">{username}</p>
       </div>
-
     </div>
 
   </div>

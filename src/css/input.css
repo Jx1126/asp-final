@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes infinite-scroll {
+@keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -31,7 +31,6 @@ body {
   @apply font-semibold text-slate-800 text-base md:text-lg hover:bg-black hover:bg-opacity-10;
 }
 
-.infinite-scroll-animation {
-  animation: infinite-scroll 30s linear infinite;
-  width: max-content
+.infinite-scroll {
+  animation: scroll 30s linear infinite;
 }

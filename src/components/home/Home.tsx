@@ -64,32 +64,44 @@ const RatingSection = () => {
     {
       star: 5,
       message: "FinanceForge has helped me to understand my spending habits and save more.",
-      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      avatar: "https://randomuser.me/api/portraits/men/79.jpg",
       username: "John Doe"
     },
     {
       star: 5,
-      message: "FinanceForge has helped me to understand my spending habits and save more.",
-      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-      username: "John Doe"
+      message: "The wealth building opportunities are amazing. I tripled my monthly income in 3 months.",
+      avatar: "https://randomuser.me/api/portraits/men/78.jpg",
+      username: "Josue Hansen"
     },
     {
       star: 5,
-      message: "FinanceForge has helped me to understand my spending habits and save more.",
-      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-      username: "John Doe"
+      message: "The link checker saved me from going into a malicious website. I would recommend this to everyone.",
+      avatar: "https://randomuser.me/api/portraits/women/75.jpg",
+      username: "Jovanni Rowe"
     },
     {
       star: 5,
-      message: "FinanceForge has helped me to understand my spending habits and save more.",
-      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-      username: "John Doe"
+      message: "This is the best financial tool I have ever used. It has helped me to save more and spend less.",
+      avatar: "https://randomuser.me/api/portraits/men/76.jpg",
+      username: "Harlee Wells"
     },
     {
       star: 5,
-      message: "FinanceForge has helped me to understand my spending habits and save more.",
-      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
-      username: "John Doe"
+      message: "The way FinanceForge has helped me to understand my spending habits is amazing.",
+      avatar: "https://randomuser.me/api/portraits/women/30.jpg",
+      username: "Teresa Compton"
+    },
+    {
+      star: 5,
+      message: "The fact that I can track my income and expenses in one place is amazing. I have saved more since I started using FinanceForge.",
+      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+      username: "Celia Elliott"
+    },
+    {
+      star: 5,
+      message: "The monthly budget planner has helped me to plan my expenses and save more.",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+      username: "Brylee Mueller"
     },
   ];
 
@@ -100,13 +112,16 @@ const RatingSection = () => {
         <p className="text-xl font-semibold mt-2 max-w-md text-center">Discover how FinanceForge has helped individual take control of their finances.</p>
       </div>
 
-      <div className="relative w-full">
-        <div className="inifite-scroll-animation flex">
+      <div className="relative w-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-100 via-transparent via-30% to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-l from-slate-100 via-transparent via-30% to-transparent z-10" />
+
+        <div className="flex infinite-scroll z-0">
           {[...ratings, ...ratings].map((rating, index) => (
-            <div className="flex-shrink-0 w-80 mx-4">
-              <RatingCard key={index} {...rating} />
+            <div className="flex-shrink-0 w-80 mx-4" key={index}>
+              <RatingCard {...rating} />
             </div>
-          ))};
+          ))}
         </div>
       </div>
     </section>
