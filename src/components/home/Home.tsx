@@ -50,9 +50,11 @@ const FeaturesSection = () => (
 );
 
 const RatingSection = () => (
-  <section>
-    <p className="text-4xl text-">What our users are saying</p>
-    <p>Discover how FinanceForge has helped individual take control of their finances.</p>
+  <section className="mt-20">
+    <div className="flex flex-col items-center justify-center">
+      <p className="text-4xl text-blue-700 font-bold uppercase text-center">What our users are saying</p>
+      <p className="text-xl font-semibold mt-2 max-w-md text-center">Discover how FinanceForge has helped individual take control of their finances.</p>
+    </div>
   </section>
 );
 
