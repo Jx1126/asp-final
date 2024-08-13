@@ -11,7 +11,8 @@ function Header() {
             className="w-10 h-auto hover:cursor-pointer"
             alt="FinanceForge logo"
           />
-          <p className="text-slate-800 md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
+          <p className="text-slate-800 hidden sm:block md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
+
         </Link>
       </div>
 
