@@ -4,6 +4,7 @@ import detail2 from "/home_detail_2.png?url";
 import detail3 from "/home_detail_3.png?url";
 
 import FeatureCard from "./FeatureCard";
+import RatingCard from "./RatingCard";
 
 const HeroSection = () => {
   return (
@@ -26,37 +27,91 @@ const HeroSection = () => {
   );
 };
 
-const FeaturesSection = () => (
-  <section className="mt-20 flex items-center justify-center">
-    <div className="grid gap-10">
-      <FeatureCard
-        title="Track your Income and Expenses"
-        description="Easily record and visualize your income and expenses. Get clear insight into your spending habits and savings with graphs."
-        image={detail1}
-      />
-      <FeatureCard
-        title="Find out ways to build your wealth"
-        description="Get top insights from our analyst and key recommendation on opportunities to build your wealth."
-        image={detail2}
-        isReversed
-      />
-      <FeatureCard
-        title="Protect yourself"
-        description="Find out more about common scams and use our link checker to safeguard yourself online."
-        image={detail3}
-      />
-    </div>
-  </section>
-);
+const FeaturesSection = () => {
 
-const RatingSection = () => (
-  <section className="mt-20">
-    <div className="flex flex-col items-center justify-center">
-      <p className="text-4xl text-blue-700 font-bold uppercase text-center">What our users are saying</p>
-      <p className="text-xl font-semibold mt-2 max-w-md text-center">Discover how FinanceForge has helped individual take control of their finances.</p>
-    </div>
-  </section>
-);
+  const features = [
+    {
+      title: "Track your Income and Expenses",
+      description: "Easily record and visualize your income and expenses. Get clear insight into your spending habits and savings with graphs.",
+      image: detail1,
+    },
+    {
+      title: "Find out ways to build your wealth",
+      description: "Get top insights from our analyst and key recommendation on opportunities to build your wealth.",
+      image: detail2,
+    },
+    {
+      title: "Protect yourself",
+      description: "Find out more about common scams and use our link checker to safeguard yourself online.",
+      image: detail3,
+    }
+  ];
+
+  return (
+    <section className="mt-20 flex items-center justify-center">
+      <div className="grid gap-10">
+        {features.map((feature, index) => (
+          <FeatureCard key={index} {...feature} isReversed={index % 2 !== 0} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const RatingSection = () => {
+
+  const ratings = [
+    {
+      star: 5,
+      message: "FinanceForge has helped me to understand my spending habits and save more.",
+      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      username: "John Doe"
+    },
+    {
+      star: 5,
+      message: "FinanceForge has helped me to understand my spending habits and save more.",
+      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      username: "John Doe"
+    },
+    {
+      star: 5,
+      message: "FinanceForge has helped me to understand my spending habits and save more.",
+      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      username: "John Doe"
+    },
+    {
+      star: 5,
+      message: "FinanceForge has helped me to understand my spending habits and save more.",
+      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      username: "John Doe"
+    },
+    {
+      star: 5,
+      message: "FinanceForge has helped me to understand my spending habits and save more.",
+      avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      username: "John Doe"
+    },
+  ];
+
+  return (
+    <section className="my-20 overflow-hidden">
+      <div className="flex flex-col items-center justify-center mb-5">
+        <p className="text-4xl text-blue-700 font-bold uppercase text-center">What our users are saying</p>
+        <p className="text-xl font-semibold mt-2 max-w-md text-center">Discover how FinanceForge has helped individual take control of their finances.</p>
+      </div>
+
+      <div className="relative w-full">
+        <div className="inifite-scroll-animation flex">
+          {[...ratings, ...ratings].map((rating, index) => (
+            <div className="flex-shrink-0 w-80 mx-4">
+              <RatingCard key={index} {...rating} />
+            </div>
+          ))};
+        </div>
+      </div>
+    </section>
+  );
+};
 
 function Home() {
   return (

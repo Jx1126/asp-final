@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 html {
   @apply scroll-smooth;
 }
@@ -20,4 +29,9 @@ body {
 
 .btn-ghost {
   @apply font-semibold text-slate-800 text-base md:text-lg hover:bg-black hover:bg-opacity-10;
+}
+
+.infinite-scroll-animation {
+  animation: infinite-scroll 30s linear infinite;
+  width: max-content
 }
