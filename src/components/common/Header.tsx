@@ -1,9 +1,9 @@
-import logo from "/logo_white.png?url";
+import logo from "/logo_black.png?url";
 import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="navbar bg-blue-600 text-white text-lg font-semibold">
+    <div className="navbar bg-slate-300 text-white text-lg font-semibold">
       <div className="navbar-start">
         <Link to='/' className="flex items-center">
           <img
@@ -11,7 +11,7 @@ function Header() {
             className="w-10 h-auto hover:cursor-pointer"
             alt="FinanceForge logo"
           />
-          <p className="text-base md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
+          <p className="text-slate-800 md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
         </Link>
       </div>
 
@@ -28,7 +28,7 @@ function Header() {
           <ul className="menu menu-horizontal px-1">
             <li>
               <details>
-                <summary className="text-base">Menu</summary>
+                <summary className="text-slate-800  ">Menu</summary>
                 <ul className="p-2 bg-black">
                   <li><a>Features</a></li>
                   <li><a>Testimonials</a></li>
@@ -41,7 +41,7 @@ function Header() {
       </div>
 
       <div className="navbar-end">
-        <a href="#" className="btn btn-secondary text-base md:text-lg !border-white !text-white hover:!border-gray-200 ease-in-out">
+        <a href="#" className="btn btn-primary text-base md:text-lg ease-in-out">
           Login
         </a>
       </div>

@@ -19,5 +19,5 @@ body {
 }
 
 .btn-ghost {
-  @apply font-semibold text-white text-base md:text-lg hover:bg-white hover:bg-opacity-15 hover:text-white;
+  @apply font-semibold text-slate-800 text-base md:text-lg hover:bg-black hover:bg-opacity-10;
 }
