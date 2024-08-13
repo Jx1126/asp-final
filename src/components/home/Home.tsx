@@ -1,26 +1,22 @@
+import hero from "/home_hero.png?url";
+
 function Home() {
   return (
-    <div>
-      <h1 className="font-bold text-5xl" >Home</h1>
+    <>
+      <div className="relative w-auto h-auto">
+        <img src={hero} alt="Hero image" className="w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
 
-      <div className="flex flex-col items-center justify-center gap-3">
-        <div className="flex gap-3 items-center">
-          <a href="#" className="btn btn-primary text-lg">Link</a>
-          <p>className="btn btn-primary text-lg"</p>
-        </div>
-
-        <div className="flex gap-3 items-center">
-          <a href="#" className="btn btn-secondary text-lg">Link</a>
-          <p>className="btn btn-secondary text-lg"</p>
-        </div>
-
-        <div className="flex gap-3 items-center">
-          <a href="#" className="btn btn-ghost text-lg">Link</a>
-          <p>className="btn btn-ghost text-lg"</p>
+        <div className="absolute inset-0 flex items-center ml-20">
+          <div className="text-white">
+            <h1 className="text-4xl md:text-6xl font-bold">FinanceForge</h1>
+            <p className="text-lg mt-3 md:text-xl">Empowering you with financial knowledge.</p>
+            <button className="btn btn-primary mt-5 w-full !font-semibold text-xl">Get Started</button>
+          </div>
         </div>
       </div>
 
-    </div>
+    </>
   )
 }
 
