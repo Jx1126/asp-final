@@ -12,6 +12,7 @@ function Header() {
             alt="FinanceForge logo"
           />
           <p className="text-slate-800 hidden sm:block md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
+
         </Link>
       </div>
 
