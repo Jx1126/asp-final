@@ -10,7 +10,7 @@ const HeroSection = () => {
   return (
     <section className="relative w-auto h-auto">
       <img src={hero} alt="Hero image" className="w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70" /> 
 
       <div className="absolute inset-0 flex items-center ml-20">
         <div className="text-white">
@@ -48,7 +48,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="mt-20 flex items-center justify-center">
+    <section className="mt-20 flex items-center justify-center">
       <div className="grid gap-10">
         {features.map((feature, index) => (
           <FeatureCard key={index} {...feature} isReversed={index % 2 !== 0} />
@@ -106,8 +106,8 @@ const RatingSection = () => {
   ];
 
   return (
-    <section id="testimonials" className="my-20 overflow-hidden relative">
-      <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+    <section className="my-20 overflow-hidden">
+      <div className="flex flex-col items-center justify-center mb-5">
         <p className="text-4xl text-blue-700 font-bold uppercase text-center">What our users are saying</p>
         <p className="text-xl font-semibold mt-2 max-w-md text-center">Discover how FinanceForge has helped individual take control of their finances.</p>
       </div>
@@ -131,11 +131,9 @@ const RatingSection = () => {
 function Home() {
   return (
     <>
-      <div className="relative z-0">
-        <HeroSection />
-        <FeaturesSection />
-        <RatingSection />
-      </div>
+      <HeroSection />
+      <FeaturesSection />
+      <RatingSection />
     </>
   );
 }
