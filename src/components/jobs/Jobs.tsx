@@ -6,6 +6,8 @@ import Slider from "react-slick"; // Import the react-slick library for the caro
 import "slick-carousel/slick/slick.css"; // Import carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import { useState } from 'react';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa'; // Importing arrow icons from react-icons
+
 
 import jobsHero from "/jobs_hero.png?url";
 
@@ -37,107 +39,126 @@ interface Stock {
   prices: number[];
 }
 
-const stockData: Stock[] = [
-  {
-    title: "The Wendy's Company (NASDAQ:WEN)",
-    prices: [21.5, 22.0, 22.1, 22.3, 22.5, 22.6],
-  },
-  {
-    title: "Moody's Corporation (NYSE:MCO)",
-    prices: [330.1, 331.0, 330.5, 332.2, 333.5, 334.1],
-  },
-  {
-    title: "The Coca-Cola Company (NYSE:KO)",
-    prices: [60.1, 60.5, 60.4, 60.6, 61.0, 61.5],
-  },
-  {
-    title: "American Express Company (NYSE:AXP)",
-    prices: [155.3, 156.0, 155.8, 156.2, 157.1, 157.5],
-  },
-  {
-    title: "Merck & Co., Inc. (NYSE:MRK)",
-    prices: [107.5, 107.2, 107.8, 108.0, 108.5, 108.9],
-  },
-  {
-    title: "Apple Inc. (NASDAQ:AAPL)",
-    prices: [190.2, 191.0, 191.5, 192.0, 192.5, 193.0],
-  },
-  {
-    title: "Microsoft Corporation (NASDAQ:MSFT)",
-    prices: [310.1, 311.0, 310.5, 312.2, 313.5, 314.1],
-  },
-  {
-    title: "Tesla, Inc. (NASDAQ:TSLA)",
-    prices: [680.2, 682.0, 681.5, 683.0, 685.5, 687.0],
-  },
-  {
-    title: "Amazon.com, Inc. (NASDAQ:AMZN)",
-    prices: [3205.5, 3210.0, 3208.1, 3212.3, 3215.5, 3220.6],
-  },
-  {
-    title: "Alphabet Inc. (NASDAQ:GOOGL)",
-    prices: [2725.5, 2730.0, 2732.1, 2735.3, 2738.5, 2740.6],
-  },
-  {
-    title: "Facebook, Inc. (NASDAQ:FB)",
-    prices: [355.5, 357.0, 356.1, 358.3, 359.5, 360.6],
-  },
-  {
-    title: "NVIDIA Corporation (NASDAQ:NVDA)",
-    prices: [545.2, 547.0, 546.5, 548.0, 549.5, 550.0],
-  },
-];
-
 function JobsTopPicksWithGraphSection() {
-  
-  
+  const stockData: Stock[] = [
+    {
+      title: "The Wendy's Company (NASDAQ:WEN)",
+      prices: [21.5, 22.0, 22.1, 22.3, 22.5, 22.0],
+    },
+    {
+      title: "Moody's Corporation (NYSE:MCO)",
+      prices: [330.1, 331.0, 330.5, 332.2, 333.5, 334.1],
+    },
+    {
+      title: "The Coca-Cola Company (NYSE:KO)",
+      prices: [60.1, 60.5, 60.4, 60.6, 61.0, 61.5],
+    },
+    {
+      title: "American Express Company (NYSE:AXP)",
+      prices: [155.3, 156.0, 155.8, 156.2, 157.1, 157.5],
+    },
+    {
+      title: "Merck & Co., Inc. (NYSE:MRK)",
+      prices: [107.5, 107.2, 107.8, 108.0, 108.5, 108.9],
+    },
+    {
+      title: "Apple Inc. (NASDAQ:AAPL)",
+      prices: [190.2, 191.0, 191.5, 192.0, 192.5, 193.0],
+    },
+    {
+      title: "Microsoft Corporation (NASDAQ:MSFT)",
+      prices: [310.1, 311.0, 310.5, 312.2, 313.5, 314.1],
+    },
+    {
+      title: "Tesla, Inc. (NASDAQ:TSLA)",
+      prices: [680.2, 682.0, 681.5, 683.0, 685.5, 687.0],
+    },
+    {
+      title: "Amazon.com, Inc. (NASDAQ:AMZN)",
+      prices: [3205.5, 3210.0, 3208.1, 3212.3, 3215.5, 3220.6],
+    },
+    {
+      title: "Alphabet Inc. (NASDAQ:GOOGL)",
+      prices: [2725.5, 2730.0, 2732.1, 2735.3, 2738.5, 2740.6],
+    },
+    {
+      title: "Facebook, Inc. (NASDAQ:FB)",
+      prices: [355.5, 357.0, 356.1, 358.3, 359.5, 360.6],
+    },
+    {
+      title: "NVIDIA Corporation (NASDAQ:NVDA)",
+      prices: [545.2, 547.0, 546.5, 548.0, 549.5, 550.0],
+    },
+  ];
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Show 3 graphs at a time
+    slidesToShow: 3, // Show 2 stocks per slide
     slidesToScroll: 1,
     arrows: true,
+  };
+
+  const calculateChange = (prices: number[]) => {
+    const latestPrice = prices[prices.length - 1];
+    const previousPrice = prices[prices.length - 2];
+    const change = latestPrice - previousPrice;
+    const percentageChange = (change / previousPrice) * 100;
+    return { change, percentageChange };
   };
 
   return (
     <section className="my-20">
       <h2 className="text-4xl font-bold text-center">Top Picks: Companies and Stocks on the Rise</h2>
       <Slider {...settings} className="mt-10">
-        {stockData.map((stock, index) => (
-          <div key={index} className="p-8">
-            <div className="border p-4 shadow-lg rounded-lg bg-white">
-              <h3 className="text-xl font-semibold mt-2 text-center">{stock.title}</h3>
-              <Line
-                data={{
-                  labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
-                  datasets: [
-                    {
-                      label: `${stock.title} Price ($)`,
-                      data: stock.prices,
-                      borderColor: 'rgba(75, 192, 192, 1)',
-                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                      fill: true,
-                      tension: 0.1,
+        {stockData.map((stock, index) => {
+          const { change, percentageChange } = calculateChange(stock.prices);
+          const isPositive = change >= 0;
+
+          return (
+            <div key={index} className="p-8 "> {/* Increased padding for larger space between cards */}
+              <div className="border-4 border-black p-8 shadow-lg bg-white"> {/* Square border with thicker black line */}
+                <Line
+                  data={{
+                    labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
+                    datasets: [
+                      {
+                        label: `${stock.title} Price ($)`,
+                        data: stock.prices,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                        tension: 0.1,
+                      },
+                    ],
+                  }}
+                  options={{
+                    scales: {
+                      y: {
+                        beginAtZero: false,
+                      },
                     },
-                  ],
-                }}
-                options={{
-                  scales: {
-                    y: {
-                      beginAtZero: false,
-                    },
-                  },
-                }}
-              />
+                  }}
+                />
+                <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
+                <div className="text-center mt-2 flex justify-center items-center space-x-4">
+                  <p className="text-lg font-semibold mr-2">Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}</p>
+                  <div className={`text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                    {isPositive ? <FaArrowUp /> : <FaArrowDown />} 
+                    <span className="ml-2">${change.toFixed(2)} ({percentageChange.toFixed(2)}%)</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </Slider>
     </section>
   );
 }
+
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 function JobsInvestmentInsightsSection() {
   const insights = [
@@ -163,38 +184,36 @@ function JobsInvestmentInsightsSection() {
     },
   ];
 
-  // State to track which dropdown is open
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // Function to toggle dropdown
   const toggleDropdown = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="my-20 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-10">
+    <section className="my-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
         Investment Insights: Expert Tips for Success
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-6">
         {insights.map((insight, index) => (
           <div
             key={index}
-            className="border shadow-lg rounded-lg bg-white"
+            className="border border-gray-200 shadow-md rounded-lg overflow-hidden bg-white transition-all duration-300"
           >
             <button
-              className="w-full text-center p-4 font-semibold text-xl flex justify-between items-center bg-gray-100 hover:bg-gray-200 rounded-lg"
+              className="w-full text-center px-6 py-4 text-xl font-semibold flex justify-between items-center bg-gray-100 hover:bg-gray-200 focus:outline-none transition-colors duration-200"
               onClick={() => toggleDropdown(index)}
-              style={{ minHeight: '60px' }}  // Ensure uniform height for all titles
+              style={{ minHeight: '70px' }}
             >
               <span className="w-full text-center">{insight.title}</span>
               <span>
-                {openIndex === index ? "▲" : "▼"}
+                {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </button>
             {openIndex === index && (
-              <div className="p-4 border-t text-center">
-                <p>{insight.description}</p>
+              <div className="px-6 py-4 bg-gray-50 text-center">
+                <p className="text-gray-700 leading-relaxed">{insight.description}</p>
               </div>
             )}
           </div>
@@ -257,8 +276,6 @@ function JobsSection() {
     </section>
   );
 }
-
-
 
 // Home Page Component
 function JobsHomePage() {
