@@ -1,14 +1,11 @@
 import { Line } from 'react-chartjs-2';
-import 'chart.js/auto'; // This is needed to properly import Chart.js when using it with React
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 import Slider from "react-slick"; // Import the react-slick library for the carousel
 import "slick-carousel/slick/slick.css"; // Import carousel styles
 import "slick-carousel/slick/slick-theme.css";
+import 'chart.js/auto'; // This is needed to properly import Chart.js when using it with React
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 import { useState } from 'react';
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa'; // Importing arrow icons from react-icons
-
-
 import jobsHero from "/jobs_hero.png?url";
 
 // Hero Section
@@ -38,6 +35,8 @@ interface Stock {
   title: string;
   prices: number[];
 }
+
+import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/solid';
 
 function JobsTopPicksWithGraphSection() {
   const stockData: Stock[] = [
@@ -91,11 +90,12 @@ function JobsTopPicksWithGraphSection() {
     },
   ];
 
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Show 2 stocks per slide
+    slidesToShow: 3, // Show 3 stocks per slide
     slidesToScroll: 1,
     arrows: true,
   };
@@ -108,6 +108,7 @@ function JobsTopPicksWithGraphSection() {
     return { change, percentageChange };
   };
 
+
   return (
     <section className="my-20">
       <h2 className="text-4xl font-bold text-center">Top Picks: Companies and Stocks on the Rise</h2>
@@ -117,8 +118,8 @@ function JobsTopPicksWithGraphSection() {
           const isPositive = change >= 0;
 
           return (
-            <div key={index} className="p-8 "> {/* Increased padding for larger space between cards */}
-              <div className="border-4 border-black p-8 shadow-lg bg-white"> {/* Square border with thicker black line */}
+            <div key={index} className="p-8"> 
+              <div className="border-4 border-black p-8 shadow-lg bg-white"> {}
                 <Line
                   data={{
                     labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
@@ -143,10 +144,16 @@ function JobsTopPicksWithGraphSection() {
                 />
                 <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
                 <div className="text-center mt-2 flex justify-center items-center space-x-4">
-                  <p className="text-lg font-semibold mr-2">Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}</p>
+                  <p className={`text-lg font-semibold mr-2 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                    Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}
+                  </p>
                   <div className={`text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
-                    {isPositive ? <FaArrowUp /> : <FaArrowDown />} 
-                    <span className="ml-2">${change.toFixed(2)} ({percentageChange.toFixed(2)}%)</span>
+                    <span className="font-bold mr-2">
+                      {isPositive ? <ArrowUpIcon className="h-4 w-6" /> : <ArrowDownIcon className="h-4 w-4" />} {/* Bold icon with color */}
+                    </span>
+                    <span>
+                      ${change.toFixed(2)} ({percentageChange.toFixed(2)}%)
+                    </span>
                   </div>
                 </div>
               </div>
@@ -202,12 +209,12 @@ function JobsInvestmentInsightsSection() {
             className="border border-gray-200 shadow-md rounded-lg overflow-hidden bg-white transition-all duration-300"
           >
             <button
-              className="w-full text-center px-6 py-4 text-xl font-semibold flex justify-between items-center bg-gray-100 hover:bg-gray-200 focus:outline-none transition-colors duration-200"
+              className="w-full px-6 py-4 text-xl font-semibold flex justify-center items-center bg-gray-100 hover:bg-gray-200 focus:outline-none transition-colors duration-200"
               onClick={() => toggleDropdown(index)}
               style={{ minHeight: '70px' }}
             >
-              <span className="w-full text-center">{insight.title}</span>
-              <span>
+              <span className="mr-4">{insight.title}</span>
+              <span className="ml-auto">
                 {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
               </span>
             </button>
@@ -222,7 +229,7 @@ function JobsInvestmentInsightsSection() {
     </section>
   );
 }
-  
+ 
 // Jobs Section with Carousel
 function JobsSection() {
   const jobs = [
