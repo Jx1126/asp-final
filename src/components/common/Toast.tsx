@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useToast } from '../../utils/ToastContext';
+
 interface Props {
   type: 'success' | 'error' | 'warning';
   message: string;
@@ -6,7 +8,10 @@ interface Props {
 
 const Toast = ({ type, message }: Props) => {
 
+  console.log('Toast rendered', { type, message });
+
   const [showToast, setShowToast] = useState(true);
+  const { deleteToast } = useToast();
 
   const getIcon = () => {
     switch (type) {
@@ -42,13 +47,14 @@ const Toast = ({ type, message }: Props) => {
 
   const closeToast = () => {
     setShowToast(false);
+    deleteToast();
   }
 
   if(!showToast) return null;
 
   return (
     <>
-      <div role="alert" className={`alert flex skeleton border rounded-md px-4 py-3 max-w-xl fixed w-full z-[1] ${getDesign()}`}>
+      <div role="alert" className={`alert flex skeleton border rounded-md px-4 py-3 max-w-xl fixed w-full z-[50] ${getDesign()}`}>
         {getIcon()}
         <span>{message}</span>
         <button onClick={closeToast} className="absolute top-0 bottom-0 right-0 px-4 py-3">

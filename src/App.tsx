@@ -5,18 +5,31 @@ import Awareness from './components/awareness/Awareness';
 import Finance from './components/finance/Finance';
 import Jobs from './components/jobs/Jobs';
 import Articles from './components/articles/Articles';
-import ProtectedRoutes from '../src/routes/ProtectedRoutes';
+import ProtectedRoutes from './utils/ProtectedRoutes';
 import Toast from './components/common/Toast';
+import { ToastProvider, useToast } from  './utils/ToastContext';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    
-    <Router>
-      
+    <ToastProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ToastProvider>
+  )
+}
+
+function AppContent() {
+  const { toastProps } = useToast();
+  console.log('Current toastProps', toastProps);
+
+  return (
+    <>
       <Header />
-      <Toast type='success' message='Success Message' />
+
+      {toastProps && <Toast type={toastProps.type} message={toastProps.message} />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,8 +45,7 @@ function App() {
 
       <Footer />
 
-    </Router>
-    
+    </>
   )
 }
 
