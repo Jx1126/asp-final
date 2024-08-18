@@ -1,12 +1,18 @@
 import logo from "/logo_black.png?url";
-import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 import AuthMenu from './AuthMenu';
 
 function Header() {
 
+  const url = useLocation();
   const [isAuthMenuOpen, setAuthMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const publicRoutes = ['/', '/scam-awareness'];
+    publicRoutes.includes(url.pathname) ? setAuthMenuOpen(false) : setAuthMenuOpen(true);
+  }, [location]);
 
   const openAuthMenu = () => {
     setAuthMenuOpen(true);
