@@ -43,7 +43,7 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
 
 
     return (
-        <div className="border border-gray-300 rounded-lg space-y-4">
+        <div className="border border-gray-300 rounded-lg mt-4 mb-4">
             <div
                 className="bg-gray-100 p-4 cursor-pointer font-semibold text-lg "
                 onClick={() => setIsOpen(!isOpen)}
@@ -52,14 +52,14 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
                 <span>{isOpen ? '▲' : '▼'}</span> {/* Display an arrow based on whether the dropdown is open */}
             </div>
             {isOpen && (
-                <div className="p-4 bg-gray-50 space-y-8">
-                    <div className="space-y-8">
+                <div className="p-4 bg-gray-50 mt-8">
+                    <div className="mt-8">
                         <Income data={data.income} />
                     </div>
-                    <div className="space-y-8">
+                    <div className="mt-8">
                         <Expenses data={data.expenses} />
                     </div>
-                    <div className="space-y-8">
+                    <div className="mt-8">
                         <Summary data={data.summary} />
                     </div>
                     {/* Flex container for Income */}
@@ -84,7 +84,7 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
 
                     {/* Flex container for Summary */}
                     <div className="mb-20 flex justify-center">
-                        <div className="w-twothird">
+                        <div className="w-2/3">
                             <PieChart
                                 title="Yearly Summary"
                                 labels={summaryLabels}
