@@ -6,6 +6,7 @@ import Finance from './components/finance/Finance';
 import Jobs from './components/jobs/Jobs';
 import Articles from './components/articles/Articles';
 import ProtectedRoutes from '../src/routes/ProtectedRoutes';
+import Toast from './components/common/Toast';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ function App() {
     <Router>
       
       <Header />
+      <Toast type='success' message='Success Message' />
 
       <Routes>
         <Route path="/" element={<Home />} />
