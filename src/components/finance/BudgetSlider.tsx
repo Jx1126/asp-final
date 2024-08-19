@@ -10,6 +10,7 @@ function BudgetSlider({ onSaveBudget }: Props) {
 
   function handleSliderChange(sliderEvent) {
     setBudget(Number(sliderEvent.target.value));
+    setBudgetSaved(false);
   }
 
   function handleButtonClick() {
