@@ -3193,8 +3193,16 @@ body {
 }
 
 @media (min-width: 768px) {
+  .md\:h-32 {
+    height: 8rem;
+  }
+
   .md\:w-96 {
     width: 24rem;
+  }
+
+  .md\:w-32 {
+    width: 8rem;
   }
 
   .md\:grid-cols-2 {
@@ -3203,6 +3211,10 @@ body {
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:px-12 {
