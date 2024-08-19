@@ -3,6 +3,8 @@ import React from 'react';
 
 import ScamCard from './ScamCard';
 import DetailCard from './DetailCard';
+import DropdownList from '../common/DropdownList';
+import Divider from '../common/Divider';
 
 const AwarenessSection = () => {
   return (
@@ -121,42 +123,89 @@ const CommonScamsSection = () => {
 };
 
 const SignsOfScamsSection = () => {
+  const scams = [
+    {
+      title: "Too Good to be True",
+      description: "Offers or deals that seam unrealistically good, such as large sums of money for little work, guaranteed returns on investments, or free high value goods."
+    },
+    {
+      title: "Lack of Contact Information",
+      description: "Legitimate businesses usually provide a physical address, phone number, and customer service details."
+    },
+    {
+      title: "Poor Grammar and Spelling Errors",
+      description: "Emails or messages with numerous grammatical errors or unusual phrasing may indicate a scam."
+    },
+    {
+      title: "Unverified Links and Attachments",
+      description: "Receiving emails with links or attachment from unknown senders or those that appear suspicious."
+    }
+  ]
+
   return (
-    <section className="my-20 overflow-hidden">
-      <div className="flex flex-col items-center justify-center mb-5">
-        <p className="text-4xl text-blue-700 font-bold uppercase text-center">Signs of Scams</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Too Good to be True: Offers or deals that seam unrealistically good, such as large sums of money for little work, guaranteed returns on investments, or free high value goods.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Lack of Contact Information: Legitimate businesses usually provide a physical address, phone number, and customer service details.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Poor Grammar and Spelling Errors: Emails or messages with numerous grammatical errors or unusual phrasing may indicate a scam.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Unverified Links and Attachments: Receiving emails with links or attachment from unknown senders or those that appear suspicious.</p>
+    <section className="mt-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+        <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Signs of Scams</p>
+        <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">By understanding these warning signs, you can safeguard your personal information against deceptive schemes</p>
       </div>
+      
+      <DropdownList items={scams} />
     </section>
     );
 }
 
 const AvoidingScamsSection = () => {
+  const avoid = [
+    {
+      title: "Protect Personal Information",
+      description: "Never share sensitive information unless sure of the recipient's legitimacy. Be cautious about what to share online."
+    },
+    {
+      title: "Ignore Unsolicited Requests",
+      description: "Be skeptical of unsolicited messages, especially those asking for money or personal details. Verify through direct contact with the supposed sender."
+    },
+    {
+      title: "Look out for Red Flags",
+      description: "Pay attention to signs of scams like poor grammar, urgent demands and unsolicited attachments or links."
+    }
+  ]
+
   return (
-    <section className="my-20 overflow-hidden">
-      <div className="flex flex-col items-center justify-center mb-5">
-        <p className="text-4xl text-blue-700 font-bold uppercase text-center">Ways to Avoid Scams</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Protect Personal Information: Never share sensitive information unless sure of the recipient's legitimacy. Be cautious about what to share online.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Ignore Unsolicited Requests: Be skeptical of unsocolicited messages, especially those asking for money or personal details. Verify through direct contact with the supposed sender.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Look out for Red Flags: Pay attention to signs of scams like poor grammar, urgent demands and unsolicited attachments or links.</p>
-      </div>
-    </section>
+    <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+      <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Ways to Avoid Scams</p>
+      <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Protect yourself by learning effective strategies to avoid scams. Stay informed about common tactics used by scammers.</p>
+    </div>
+    
+    <DropdownList items={avoid} />
+  </section>
     );
 }
 
 const ReportingScamsSection = () => {
+  const report = [
+    {
+      title: "Document Everything",
+      description: "Keep records of all interactions, messages and transactions related to the scam."
+    },
+    {
+      title: "Provide Details",
+      description: "Be as detailed as possible when reporting the scam, to help authorities understand and investigate the matter."
+    },
+    {
+      title: "Follow Up",
+      description: "Enquire about follow-up actions or additional steps needed after reporting the scam."
+    }
+  ]
   return (
-    <section className="my-20 overflow-hidden">
-      <div className="flex flex-col items-center justify-center mb-5">
-        <p className="text-4xl text-blue-700 font-bold uppercase text-center">Reporting Scams</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Document Everything: Keep records of all interactions, messages and transactions related to the scam.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Provide Details: Be as detailed as possible when reporting the scam, to help authorities understand and investigate the matter.</p>
-        <p className="text-xl font-semibold mt-2 w-full text-center">Follow Up: Enquire about follow-up actions or additional steps needed after reporting the scam.</p>
-      </div>
-    </section>
+    <section className="mb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+      <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Reporting scams</p>
+      <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Reporting scams is a critical step in stopping fraud and protecting others from falling victim.</p>
+    </div>
+    
+    <DropdownList items={report} />
+  </section>
     );
 }
 
@@ -167,7 +216,9 @@ function Awareness() {
       <LinkCheckerSection />
       <CommonScamsSection />
       <SignsOfScamsSection />
+      <Divider />
       <AvoidingScamsSection />
+      <Divider />
       <ReportingScamsSection />
     </>
   );
