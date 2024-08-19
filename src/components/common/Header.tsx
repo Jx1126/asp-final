@@ -27,7 +27,7 @@ function Header() {
                 className="w-10 h-auto hover:cursor-pointer"
                 alt="FinanceForge logo"
               />
-              <p className="text-slate-800 hidden sm:block md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
+              <p className="text-slate-800 hidden sm:block sm:text-base md:text-lg hover:cursor-pointer ml-2">FinanceForge</p>
 
             </Link>
           </div>
@@ -35,8 +35,8 @@ function Header() {
           <div className="navbar-center">
             <div className="hidden sm:block">
               <div className="menu menu-horizontal">
-                <a href="#features" className="btn btn-ghost">Features</a>
-                <a href="#testimonials" className="btn btn-ghost">Testimonials</a>
+                <Link to="/finance-manager" className="btn btn-ghost">Finance Manager</Link>
+                <Link to="/jobs-wealth" className="btn btn-ghost">Jobs & Investment</Link>
                 <Link to='/scam-awareness' className="btn btn-ghost">ScamShield</Link>
               </div>
             </div>
@@ -46,10 +46,16 @@ function Header() {
                 <li>
                   <details>
                     <summary className="text-slate-800  ">Menu</summary>
-                    <ul className="p-2 bg-black">
-                      <li><a>Features</a></li>
-                      <li><a>Testimonials</a></li>
-                      <li><Link to='/scam-awareness' >ScamShield</Link></li>
+                    <ul className="p-2 bg-slate-300 text-black">
+                      <li>
+                        <Link to="/finance-manager">Finance Manager</Link>
+                      </li>
+                      <li>
+                        <Link to="/jobs-wealth">Jobs & Investment</Link>
+                      </li>
+                      <li>
+                        <Link to="/scam-awareness">ScamShield</Link>
+                      </li>
                     </ul>
                   </details>
                 </li>
