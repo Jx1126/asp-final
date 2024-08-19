@@ -1,7 +1,8 @@
 import { useState } from "react";
 import FinanceHero from "./FinanceHero";
-import BudgetSlider from "./BudgetSlider";
+import BudgetInput from "./BudgetInput";
 import FinanceCalendar from "./FinanceCalendar";
+import TransactionInput from "./TransactionInput";
 
 function Finance() {
   const [budget, setBudget] = useState(0);
@@ -13,7 +14,8 @@ function Finance() {
   return (
     <div>
       <FinanceHero />
-      <BudgetSlider onSaveBudget={onSaveBudget} />
+      <TransactionInput />
+      <BudgetInput onSaveBudget={onSaveBudget} />
       <FinanceCalendar budget={budget} />
     </div>
   );

@@ -4,7 +4,7 @@ interface Props {
   onSaveBudget: (budget: number) => void;
 }
 
-function BudgetSlider({ onSaveBudget }: Props) {
+function BudgetInput({ onSaveBudget }: Props) {
   const [budget, setBudget] = useState(0);
   const [budgetSaved, setBudgetSaved] = useState(false);
 
@@ -21,13 +21,11 @@ function BudgetSlider({ onSaveBudget }: Props) {
   return (
     <>
       <div className="flex flex-row justify-center align-center">
-        <p>Selected Budget: {budget}</p>
-        <div className="w-1/2">
+        <div className="w-1/2 p-10">
           <input
-            type="range"
-            min="0"
-            max="20000"
-            className="range range-primary"
+            type="number"
+            placeholder="Monthly Budget"
+            className="input input-bordered w-full max-w-xs"
             onChange={handleSliderChange}
           />
           <a className="btn btn-primary text-lg" onClick={handleButtonClick}>
@@ -41,4 +39,4 @@ function BudgetSlider({ onSaveBudget }: Props) {
   );
 }
 
-export default BudgetSlider;
+export default BudgetInput;
