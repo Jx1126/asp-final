@@ -5,8 +5,8 @@ import ScamCard from './ScamCard';
 const AwarenessSection = () => {
   return (
     <section className="relative w-auto h-auto">
-      <img src={hero} alt="Hero image" className="w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
+      <img src={hero} alt="Hero image" className="w-full object-cover brightness-75" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85" />
 
       <div className="absolute inset-0 flex items-center ml-20">
         <div className="text-white">
@@ -86,10 +86,12 @@ const CommonScamsSection = () => {
         <p className="text-4xl text-blue-700 font-bold uppercase">Common Types of Scams</p>
       </div>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {scams.map((scam, index) => (
-          <ScamCard key={index} {...scam} />
-        ))}
+      <div className="flex items-center justify-center w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {scams.map((scam, index) => (
+            <ScamCard key={index} {...scam} />
+          ))}
+        </div>
       </div>
     </section>
   );
