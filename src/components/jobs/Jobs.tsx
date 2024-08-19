@@ -1,28 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import Slider from "react-slick"; // Import the react-slick library for the carousel
+import jobsHero from "/jobs_hero.png?url";
 import "slick-carousel/slick/slick.css"; // Import carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import 'chart.js/auto'; // This is needed to properly import Chart.js when using it with React
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
-import { useState } from 'react';
-import jobsHero from "/jobs_hero.png?url";
 
 // Hero Section
 function JobsHeroSection() {
   return (
     <section className="relative w-auto h-auto">
-      <img src={jobsHero} alt="Hero image" className="w-full object-cover" />
+      <img src={jobsHero} alt="Hero image" className="w-full object-cover brightness-75" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
 
       <div className="absolute inset-0 flex items-center ml-20">
         <div className="text-white">
           <h1 className="text-4xl md:text-6xl font-bold">
-            Investment Opportunities with Bullish Trends
+            Investment Opportunities
           </h1>
           <p className="text-lg mt-3 md:text-xl">
-            Find out about the companies and stocks that are experiencing
-            bullish trends to guide your investment decisions!
+            Find out about the bullish trends to guide your investment decisions!
           </p>
         </div>
       </div>
@@ -90,14 +89,50 @@ function JobsTopPicksWithGraphSection() {
     },
   ];
 
+  const [slideDisplayNumber, setSlideDisplayNumber] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 648) {
+        setSlideDisplayNumber(1);
+      } else if (window.innerWidth < 1024) {
+        setSlideDisplayNumber(2);
+      } else {
+        setSlideDisplayNumber(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Show 3 stocks per slide
+    slidesToShow: slideDisplayNumber,
     slidesToScroll: 1,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   const calculateChange = (prices: number[]) => {
@@ -108,18 +143,21 @@ function JobsTopPicksWithGraphSection() {
     return { change, percentageChange };
   };
 
-
   return (
     <section className="my-20">
-      <h2 className="text-4xl font-bold text-center">Top Picks: Companies and Stocks on the Rise</h2>
+      <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+        <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Top Picks</p>
+        <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Companies and Stocks on the Rise</p>
+      </div>
+      
       <Slider {...settings} className="mt-10">
         {stockData.map((stock, index) => {
           const { change, percentageChange } = calculateChange(stock.prices);
           const isPositive = change >= 0;
 
           return (
-            <div key={index} className="p-8"> 
-              <div className="border-4 border-black p-8 shadow-lg bg-white"> {}
+            <div key={index} className="p-3"> 
+              <div className="border-4 border-slate-700 p-8 shadow-lg bg-white rounded-lg"> {}
                 <Line
                   data={{
                     labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
@@ -199,9 +237,10 @@ function JobsInvestmentInsightsSection() {
 
   return (
     <section className="my-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-        Investment Insights: Expert Tips for Success
-      </h2>
+      <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+        <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Investment Insights</p>
+        <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Expert Tips for Success</p>
+      </div>
       <div className="space-y-6">
         {insights.map((insight, index) => (
           <div
@@ -209,7 +248,7 @@ function JobsInvestmentInsightsSection() {
             className="border border-gray-200 shadow-md rounded-lg overflow-hidden bg-white transition-all duration-300"
           >
             <button
-              className="w-full px-6 py-4 text-xl font-semibold flex justify-center items-center bg-gray-100 hover:bg-gray-200 focus:outline-none transition-colors duration-200"
+              className="w-full px-6 py-4 text-xl font-semibold flex justify-center items-center bg-white hover:bg-gray-200 focus:outline-none transition-colors duration-200"
               onClick={() => toggleDropdown(index)}
               style={{ minHeight: '70px' }}
             >
@@ -250,26 +289,66 @@ function JobsSection() {
     },
   ];
 
+  const [slideDisplayNumber, setSlideDisplayNumber] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 648) {
+        setSlideDisplayNumber(1);
+      } else if (window.innerWidth < 1024) {
+        setSlideDisplayNumber(2);
+      } else {
+        setSlideDisplayNumber(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slideDisplayNumber,
     slidesToScroll: 1,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
     <section className="my-20">
-      <h2 className="text-4xl font-bold text-center">Jobs</h2>
-      <Slider {...settings} className="mt-10">
+      <div className="flex flex-col items-center justify-center mb-5 relative z-20">
+        <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Jobs</p>
+        <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Simple job opportunities to help you kickstart your career</p>
+      </div>
+      <Slider {...settings} className="mt-3">
         {jobs.map((job, index) => (
-          <div key={index} className="p-8">
-            <div className="border p-4 shadow-lg rounded-lg bg-white">
+          <div key={index} className="p-5">
+            <div className="border p-7 shadow-lg rounded-lg bg-white">
               <img
                 src={job.image}
                 alt={job.title}
-                className="w-full h-48 object-cover rounded-t-lg"
+                className="w-full h-48 object-cover rounded-md"
               />
               <h3 className="text-xl font-semibold mt-2">{job.title}</h3>
               <p className="mt-2">{job.description}</p>
