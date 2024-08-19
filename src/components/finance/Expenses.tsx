@@ -23,15 +23,15 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
                 <table className="w-full mt-2 border-collapse">
                     <thead>
                         <tr>
-                            <th className="border border-gray-300 p-2 text-left">Month</th>
-                            <th className="border border-gray-300 p-2 text-right">Amount</th>
+                            <th className="border border-gray-300 p-2 text-center">Month</th>
+                            <th className="border border-gray-300 p-2 text-center">Amount</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((expense) => (
                             <tr key={expense.month}>
-                                <td className="border border-gray-300 p-2">{expense.month}</td> {/* Month name */}
-                                <td className="border border-gray-300 p-2 text-right">${expense.amount.toFixed(2)}</td> {/* Expense amount */}
+                                <td className="border border-gray-300 p-2 text-center">{expense.month}</td> {/* Month name */}
+                                <td className="border border-gray-300 p-2 text-center">${expense.amount.toFixed(2)}</td> {/* Expense amount */}
                             </tr>
                         ))}
                     </tbody>

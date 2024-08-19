@@ -43,7 +43,7 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
 
 
     return (
-        <div className="border border-gray-300 rounded-lg mt-4 mb-4">
+        <div className="border-gray-300 rounded-lg mt-4 mb-4 border-2 shadow-inner">
             <div
                 className="bg-gray-100 p-4 cursor-pointer font-semibold text-lg "
                 onClick={() => setIsOpen(!isOpen)}
