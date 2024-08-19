@@ -1,6 +1,8 @@
 import hero from "/awareness_hero.png?url";
+import React from 'react';
 
 import ScamCard from './ScamCard';
+import DetailCard from './DetailCard';
 
 const AwarenessSection = () => {
   return (
@@ -33,10 +35,10 @@ const LinkCheckerSection = () => {
           <input
             type="text"
             placeholder="Link"
-            className="w-full md:w-96 px-4 py-2 border rounded-l-lg focus:outline-none"
+            className="w-full md:w-96 px-4 py-2 border rounded-l-lg focus:outline-1 focus:outline-blue-400 shadow-sm"
           />
-          <button className="bg-blue-700 text-white px-8 py-2 rounded-r-lg shadow-lg hover:bg-blue-800 focus:outline-none">
-            Search
+          <button className="bg-blue-700 text-white px-8 py-2 rounded-r-lg shadow-lg hover:bg-blue-800 focus:outline-none ease-in-out hover:skeleton hover:rounded-none hover:rounded-tr-lg hover:rounded-br-lg transition-all">
+            Check
           </button>
         </div>
       </div>
@@ -49,34 +51,42 @@ const CommonScamsSection = () => {
     {
       title: "Imposter Scam",
       image: "awareness_detail_1.png",
+      description: "Imposter scams involve criminals posing as trusted individuals or organizations, such as government agencies, financial institutions, or well-known companies. They use various tactics to deceive victims into providing personal information, financial details, or making payments. These scams often involve urgent threats or promises of rewards to manipulate victims into acting quickly without verifying the legitimacy of the request.",
     },
     {
       title: "Blackmail Scam",
       image: "awareness_detail_2.png",
+      description: "In a blackmail scam, fraudsters threaten to reveal compromising or sensitive information unless the victim pays a ransom. The threats can involve exposing personal data, private photos, or false allegations of misconduct. Victims are often coerced into making payments out of fear, even if the threats are baseless or the information is fabricated. The goal is to exploit fear and shame for financial gain.",
     },
     {
       title: "Romance Scam",
       image: "awareness_detail_3.png",
+      description: "Romance scams exploit emotions by targeting individuals seeking relationships. Scammers create fake profiles on dating websites or social media, often using stolen photos and fabricated identities. They build trust and emotional connections over time, only to fabricate crises or urgent needs, asking the victim for money or sensitive information. Victims are often left heartbroken and financially devastated when they realize the relationship was a lie.",
     },
     {
       title: "Employment Scams",
       image: "awareness_detail_4.png",
+      description: "Employment scams prey on job seekers by offering fake job opportunities. Scammers create realistic-looking job postings, conduct fake interviews, and send fraudulent job offers. They may ask for personal information, such as social security numbers, or upfront payments for background checks, training, or equipment. Victims may invest time and money into what seems like a legitimate job, only to realize it's a scam after their personal information or money has been stolen.",
     },
     {
       title: "Phishing Scam",
       image: "awareness_detail_5.png",
+      description: "Phishing scams are deceptive attempts to obtain sensitive information by masquerading as a trustworthy entity in electronic communications. These scams often involve fake emails, messages, or websites designed to look legitimate, tricking victims into providing login credentials, financial information, or other personal details. Phishing attacks can lead to identity theft, financial loss, and unauthorized access to sensitive accounts.",
     },
     {
       title: "Investment Scam",
       image: "awareness_detail_6.png",
+      description: "Investment scams promise high returns with little or no risk to lure victims into parting with their money. These scams often involve fake investment opportunities, such as Ponzi schemes, pyramid schemes, or fraudulent stocks and bonds. Victims are persuaded to invest large sums, only to find out later that the investment was a sham and their money has vanished.",
     },
     {
       title: "Social Engineering Scam",
       image: "awareness_detail_7.png",
+      description: "Scammers manipulate victims into providing personal information or money through psychoSocial engineering scams manipulate victims into revealing confidential information or performing actions that compromise their security. These scams rely on psychological tactics, exploiting human behavior and trust rather than technical hacking methods. Victims may be tricked into providing passwords, personal information, or access to secure systems, often without realizing they've been deceived.",
     },
     {
       title: "Cloud Mining Scam",
       image: "awareness_detail_8.png",
+      description: "Cloud mining scams offer victims the opportunity to mine cryptocurrencies through cloud-based services. Scammers typically lure victims with promises of high returns and minimal effort. However, these operations are often fraudulent, with no actual mining taking place. Victims invest in non-existent services, losing their money to scammers who vanish without a trace.",
     }
   ];
 
@@ -89,7 +99,20 @@ const CommonScamsSection = () => {
       <div className="flex items-center justify-center w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {scams.map((scam, index) => (
-            <ScamCard key={index} {...scam} />
+            <React.Fragment key={index}>
+              <ScamCard
+                {...scam}
+                showDetails={() => {
+                  const modal = document.getElementById(`scam-modal-${index}`) as HTMLDialogElement;
+                  if (modal) modal.showModal();
+                }}
+              />
+              <DetailCard
+                id={`scam-modal-${index}`}
+                title={scam.title}
+                description={scam.description}
+              />
+            </React.Fragment>
           ))}
         </div>
       </div>
