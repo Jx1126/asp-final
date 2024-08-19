@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import Slider from "react-slick"; // Import the react-slick library for the carousel
 import jobsHero from "/jobs_hero.png?url";
+import DropdownList from "../common/DropdownList";
 import "slick-carousel/slick/slick.css"; // Import carousel styles
 import "slick-carousel/slick/slick-theme.css";
 import 'chart.js/auto'; // This is needed to properly import Chart.js when using it with React
@@ -203,7 +204,7 @@ function JobsTopPicksWithGraphSection() {
   );
 }
 
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+// import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 function JobsInvestmentInsightsSection() {
   const insights = [
@@ -229,42 +230,14 @@ function JobsInvestmentInsightsSection() {
     },
   ];
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleDropdown = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section className="my-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center justify-center mb-5 relative z-20">
         <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Investment Insights</p>
         <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Expert Tips for Success</p>
       </div>
-      <div className="space-y-6">
-        {insights.map((insight, index) => (
-          <div
-            key={index}
-            className="border border-gray-200 shadow-md rounded-lg overflow-hidden bg-white transition-all duration-300"
-          >
-            <button
-              className="w-full px-6 py-4 text-xl font-semibold flex justify-center items-center bg-white hover:bg-gray-200 focus:outline-none transition-colors duration-200"
-              onClick={() => toggleDropdown(index)}
-              style={{ minHeight: '70px' }}
-            >
-              <span className="mr-4">{insight.title}</span>
-              <span className="ml-auto">
-                {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-              </span>
-            </button>
-            {openIndex === index && (
-              <div className="px-6 py-4 bg-gray-50 text-center">
-                <p className="text-gray-700 leading-relaxed">{insight.description}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      
+      <DropdownList items={insights} />
     </section>
   );
 }
