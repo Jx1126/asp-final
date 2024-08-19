@@ -63,8 +63,8 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
                         <Summary data={data.summary} />
                     </div>
                     {/* Flex container for Income */}
-                    <div className="mt-10 mb-20 grid grid-cols-2">
-                        <div className="flex justify-center">
+                    <div className="mt-10 mb-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="w-full max-w-md mx-auto">
                             <PieChart
                                 title="Monthly Income"
                                 labels={incomeLabels}
@@ -72,7 +72,7 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
                                 backgroundColors={incomeColors}
                             />
                         </div>
-                        <div className="flex justify-center">
+                        <div className="w-full max-w-md mx-auto">
                             <PieChart
                                 title="Monthly Expenses"
                                 labels={expenseLabels}
@@ -83,15 +83,13 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
                     </div>
 
                     {/* Flex container for Summary */}
-                    <div className="mb-20 flex justify-center">
-                        <div className="w-2/3">
-                            <PieChart
-                                title="Yearly Summary"
-                                labels={summaryLabels}
-                                data={summaryValues}
-                                backgroundColors={summaryColors}
-                            />
-                        </div>
+                    <div className="mb-20 w-full max-w-lg mx-auto">
+                        <PieChart
+                            title="Yearly Summary"
+                            labels={summaryLabels}
+                            data={summaryValues}
+                            backgroundColors={summaryColors}
+                        />
                     </div>
                 </div>
             )}

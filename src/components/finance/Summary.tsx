@@ -27,20 +27,20 @@ const Summary: React.FC<SummaryProps> = ({ data }) => {
       {isOpen && (
         <div className="mt-2 space-y-2">
           <div className="justify-between">
-            <p><strong>Yearly Income:</strong></p>
-            <p className="text-green-600">${data.yearlyIncome.toFixed(2)}</p>
+            <p className="font-bold">Yearly Income</p>
+            <p className="text-green-600 font-semibold">${data.yearlyIncome.toFixed(2)}</p>
           </div>
           <div className="justify-between">
-            <p><strong>Expenses:</strong></p>
-            <p className="text-red-600">${data.expenses.toFixed(2)}</p>
+            <p className="font-bold">Expenses</p>
+            <p className="text-red-600 font-semibold">${data.expenses.toFixed(2)}</p>
           </div>
           <div className="justify-between">
-            <p><strong>Recurring Savings:</strong></p>
-            <p className="text-blue-600">${data.recurringSavings.toFixed(2)}</p>
+            <p className="font-bold">Recurring Savings</p>
+            <p className="text-blue-600 font-semibold">${data.recurringSavings.toFixed(2)}</p>
           </div>
           <div className="justify-between">
-            <p><strong>Available Disposable Income:</strong></p>
-            <p>${data.availableDisposableIncome.toFixed(2)}</p>
+            <p className="font-bold">Available Disposable Income</p>
+            <p className="text-yellow-600 font-semibold">${data.availableDisposableIncome.toFixed(2)}</p>
           </div>
         </div>
       )}
