@@ -41,9 +41,9 @@ function FinanceCalendar({ budget }: Props) {
   function eventColour(event) {
     let backgroundColor;
     if (event.title < 0) {
-      backgroundColor = "red";
+      backgroundColor = "#f28482";
     } else {
-      backgroundColor = "green";
+      backgroundColor = "#90a955";
     }
     return { style: { backgroundColor } };
   }

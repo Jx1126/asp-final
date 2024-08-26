@@ -36,7 +36,10 @@ const MonthlyFinanceDetails: React.FC<MonthlyFinanceDetailsProps> = ({ data }) =
     data.summary.disposableIncome,
   ];
 
-  const chartColors = ['#FF6384', '#36A2EB', '#FFCE56', '#cc65fe', '#ff9f40'];
+  const incomeColors = ['#e07a5f', '#3d405b', '#81b29a', '#f4f1de', '#f2cc8f'];
+  const expenseColors = ['#f6bd60', '#f7ede2', '#f5cac3', '#84a59d', '#f28482'];
+  const summaryColors = ['#cdb4db', '#ffafcc', '#bde0fe', '#ffc8dd', '#a2d2ff'];
+
 
   return (
     <div className="monthly-finance-details">
@@ -65,7 +68,7 @@ const MonthlyFinanceDetails: React.FC<MonthlyFinanceDetailsProps> = ({ data }) =
             title="Income Distribution"
             labels={incomeLabels}
             data={incomeValues}
-            backgroundColors={chartColors}
+            backgroundColors={incomeColors}
           />
         </div>
         <div className="w-full max-w-md mx-auto">
@@ -73,7 +76,7 @@ const MonthlyFinanceDetails: React.FC<MonthlyFinanceDetailsProps> = ({ data }) =
             title="Expenses Distribution"
             labels={expenseLabels}
             data={expenseValues}
-            backgroundColors={chartColors}
+            backgroundColors={expenseColors}
           />
         </div>
         <div className="w-full max-w-md mx-auto">
@@ -81,7 +84,7 @@ const MonthlyFinanceDetails: React.FC<MonthlyFinanceDetailsProps> = ({ data }) =
             title="Monthly Summary"
             labels={summaryLabels}
             data={summaryValues}
-            backgroundColors={chartColors}
+            backgroundColors={summaryColors}
           />
         </div>
       </div>

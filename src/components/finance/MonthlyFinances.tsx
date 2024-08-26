@@ -202,7 +202,7 @@ const MonthlyFinances: React.FC = () => {
                         <div className='border-gray-300 rounded-lg mt-4 mb-4 border-2 shadow-inner'>
                             <div key={data.month} className='text-center'>
                                 <div
-                                    className="month-button bg-gray-100 p-4 cursor-pointer font-semibold hover:bg-blue-600 transition"
+                                    className="month-button bg-gray-100 p-4 cursor-pointer font-semibold hover:bg-cyan-100 transition"
                                     onClick={() => toggleMonth(data.month)}
                                 >
                                     {data.month}

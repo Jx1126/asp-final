@@ -29,15 +29,15 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
     ];
 
     const incomeColors = [
-        '#FF6384', '#36A2EB', '#FFCE56', '#cc65fe', '#ff9f40',
-        '#1abc9c', '#2ecc71', '#878fc9', '#9b59b6', '#34495e',
-        '#f1c40f', '#e74c3c'
+        '#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c',
+        '#5f0f40', '#9a031e', '#fb8b24', '#0466c8', '#e7c6ff',
+        '#9d4edd', '#e74c3c'
     ];
 
     const expenseColors = [
-        '#FF6384', '#36A2EB', '#FFCE56', '#cc65fe', '#ff9f40',
-        '#1abc9c', '#2ecc71', '#878fc9', '#9b59b6', '#34495e',
-        '#f1c40f', '#e74c3c'
+        '#ef476f', '#ffd166', '#06d6a0', '#118ab2', '#073b4c',
+        '#5f0f40', '#9a031e', '#fb8b24', '#0466c8', '#e7c6ff',
+        '#9d4edd', '#e74c3c'
     ];
     const summaryColors = ['#ADDFB3', '#FF6D6A', '#8BD3E6', '#EFBE7D'];
 
@@ -45,11 +45,11 @@ const YearItem: React.FC<YearItemProps> = ({ data }) => {
     return (
         <div className="border-gray-300 rounded-lg mt-4 mb-4 border-2 shadow-inner">
             <div
-                className="bg-gray-100 p-4 cursor-pointer font-semibold text-lg "
+                className="bg-gray-100 p-4 cursor-pointer font-semibold text-lg hover:bg-cyan-100 transition"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <span>{data.year}</span> {/* Display the year */}
-                <span>{isOpen ? '▲' : '▼'}</span> {/* Display an arrow based on whether the dropdown is open */}
+                
             </div>
             {isOpen && (
                 <div className="p-4 bg-gray-50 mt-8">

@@ -1,6 +1,6 @@
-// src/components/SummaryCharts.tsx
 
-import React from 'react';
+
+import React, { useState } from 'react';
 
 interface SummaryData {
   totalIncome: number;
@@ -15,38 +15,44 @@ interface SummaryChartsProps {
 }
 
 const SummaryCharts: React.FC<SummaryChartsProps> = ({ month, summary }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="summary-charts p-4 border rounded shadow">
-      <h3 className="text-lg font-semibold mb-2">Summary - {month}</h3>
+    <div>
+      <div
+        className="bg-green-100 p-2 cursor-pointer justify-between items-center font-semibold"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>Summary</span>
+        <span>{isOpen ? '▲' : '▼'}</span>
+      </div>
+      {isOpen && (
+        <div className="summary-charts p-4 border rounded shadow">
+          <h3 className="text-lg font-semibold mb-2">Summary - {month}</h3>
 
-      {/* Summary Table */}
-      <table className="table-auto w-full mb-4">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">Category</th>
-            <th className="px-4 py-2">Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="border px-4 py-2">Total Income</td>
-            <td className="border px-4 py-2">${summary.totalIncome.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="border px-4 py-2">Total Expenses</td>
-            <td className="border px-4 py-2">${summary.totalExpenses.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="border px-4 py-2">Savings</td>
-            <td className="border px-4 py-2">${summary.savings.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td className="border px-4 py-2">Disposable Income</td>
-            <td className="border px-4 py-2">${summary.disposableIncome.toFixed(2)}</td>
-          </tr>
-        </tbody>
-      </table>
+          {/* Summary Table */}
+          
+
+          <div className="mt-2 space-y-2">
+            <div className="justify-between">
+              <p className="font-bold">Total Income</p>
+              <p className="text-green-600 font-semibold">${summary.totalIncome.toFixed(2)}</p>
+            </div>
+            <div className="justify-between">
+              <p className="font-bold">Total Expenses</p>
+              <p className="text-red-600 font-semibold">${summary.totalExpenses.toFixed(2)}</p>
+            </div>
+            <div className="justify-between">
+              <p className="font-bold">Savings</p>
+              <p className="text-blue-600 font-semibold">${summary.savings.toFixed(2)}</p>
+            </div>
+            <div className="justify-between">
+              <p className="font-bold">Available Disposable Income</p>
+              <p className="text-yellow-600 font-semibold">${summary.disposableIncome.toFixed(2)}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

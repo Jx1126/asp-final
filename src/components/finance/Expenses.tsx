@@ -20,22 +20,29 @@ const Expenses: React.FC<ExpensesProps> = ({ data }) => {
                 <span>{isOpen ? '▲' : '▼'}</span> {/* Arrow based on whether the dropdown is open */}
             </div>
             {isOpen && (
-                <table className="w-full mt-2 border-collapse">
-                    <thead>
-                        <tr>
-                            <th className="border border-gray-300 p-2 text-center">Month</th>
-                            <th className="border border-gray-300 p-2 text-center">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((expense) => (
-                            <tr key={expense.month}>
-                                <td className="border border-gray-300 p-2 text-center">{expense.month}</td> {/* Month name */}
-                                <td className="border border-gray-300 p-2 text-center">${expense.amount.toFixed(2)}</td> {/* Expense amount */}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+
+
+                <div className="expenses-table p-4 border rounded shadow">
+                    <h3 className="text-lg font-semibold mb-2">Expenses</h3>
+                    <div>
+                        <table className="min-w-full table-auto">
+                            <thead>
+                                <tr>
+                                    <th className="text-left">Month</th>
+                                    <th className="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data.map((expense) => (
+                                    <tr key={expense.month}>
+                                        <td className="py-1 text-left">{expense.month}</td>
+                                        <td className="py-1 text-right">${expense.amount.toFixed(2)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             )}
         </div>
     );

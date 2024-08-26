@@ -227,7 +227,7 @@ const YearlySummary: React.FC = () => {
           <TransactionInput />
           <BudgetInput onSaveBudget={onSaveBudget} />
           <div className='flex justify-center'>
-            <div className="w-2/3">
+            <div className="w-3/5">
               <FinanceCalendar budget={budget} />
             </div>
           </div>

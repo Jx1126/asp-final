@@ -20,22 +20,27 @@ const Income: React.FC<IncomeProps> = ({ data }) => {
         <span>{isOpen ? '▲' : '▼'}</span> {/* Arrow based on whether the dropdown is open */}
       </div>
       {isOpen && (
-        <table className="w-full mt-2 border-collapse">
+        
+
+        <div className="income-table p-4 border rounded shadow">
+        <h3 className="text-lg font-semibold mb-2">Income</h3>
+        <table className="min-w-full table-auto">
           <thead>
             <tr>
-              <th className="border border-gray-300 p-2 text-center">Month</th>
-              <th className="border border-gray-300 p-2 text-center">Amount</th>
+              <th className="text-left">Month</th>
+              <th className="text-right">Amount</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((income) => (
+          {data.map((income) => (
               <tr key={income.month}>
-                <td className="border border-gray-300 p-2 text-center">{income.month}</td> {/* Month name */}
-                <td className="border border-gray-300 p-2 text-center">${income.amount.toFixed(2)}</td> {/* Income amount */}
+                <td className="py-1 text-left">{income.month}</td>
+                <td className="py-1 text-right">${income.amount.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
       )}
     </div>
   );
