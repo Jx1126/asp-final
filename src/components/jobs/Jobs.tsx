@@ -151,55 +151,58 @@ function JobsTopPicksWithGraphSection() {
         <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Companies and Stocks on the Rise</p>
       </div>
       
-      <Slider {...settings} className="mt-10">
-        {stockData.map((stock, index) => {
-          const { change, percentageChange } = calculateChange(stock.prices);
-          const isPositive = change >= 0;
+        {/* <div className='w-2/3'> */}
+        <Slider {...settings} className="mt-10">
+          {stockData.map((stock, index) => {
+            const { change, percentageChange } = calculateChange(stock.prices);
+            const isPositive = change >= 0;
 
-          return (
-            <div key={index} className="p-3"> 
-              <div className="border-4 border-slate-700 p-8 shadow-lg bg-white rounded-lg"> {}
-                <Line
-                  data={{
-                    labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
-                    datasets: [
-                      {
-                        label: `${stock.title} Price ($)`,
-                        data: stock.prices,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: true,
-                        tension: 0.1,
+            return (
+              <div key={index} className="p-3">
+                <div className="border-4 border-slate-700 p-8 shadow-lg bg-white rounded-lg"> { }
+                  <Line
+                    data={{
+                      labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
+                      datasets: [
+                        {
+                          label: `${stock.title} Price ($)`,
+                          data: stock.prices,
+                          borderColor: 'rgba(75, 192, 192, 1)',
+                          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                          fill: true,
+                          tension: 0.1,
+                        },
+                      ],
+                    }}
+                    options={{
+                      scales: {
+                        y: {
+                          beginAtZero: false,
+                        },
                       },
-                    ],
-                  }}
-                  options={{
-                    scales: {
-                      y: {
-                        beginAtZero: false,
-                      },
-                    },
-                  }}
-                />
-                <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
-                <div className="text-center mt-2 flex justify-center items-center space-x-4">
-                  <p className={`text-lg font-semibold mr-2 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
-                    Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}
-                  </p>
-                  <div className={`text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
-                    <span className="font-bold mr-2">
-                      {isPositive ? <ArrowUpIcon className="h-4 w-6" /> : <ArrowDownIcon className="h-4 w-4" />} {/* Bold icon with color */}
-                    </span>
-                    <span>
-                      ${change.toFixed(2)} ({percentageChange.toFixed(2)}%)
-                    </span>
+                    }}
+                  />
+                  <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
+                  <div className="text-center mt-2 flex justify-center items-center space-x-4">
+                    <p className={`text-lg font-semibold mr-2 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                      Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}
+                    </p>
+                    <div className={`text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                      <span className="font-bold mr-2">
+                        {isPositive ? <ArrowUpIcon className="h-4 w-6" /> : <ArrowDownIcon className="h-4 w-4" />} {/* Bold icon with color */}
+                      </span>
+                      <span>
+                        ${change.toFixed(2)} ({percentageChange.toFixed(2)}%)
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </Slider>
+            );
+          })}
+        </Slider>
+        {/* </div> */}
+      
     </section>
   );
 }
@@ -236,12 +239,12 @@ function JobsInvestmentInsightsSection() {
         <p className="text-3xl sm:text-4xl text-blue-700 font-bold uppercase text-center">Investment Insights</p>
         <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Expert Tips for Success</p>
       </div>
-      
+
       <DropdownList items={insights} />
     </section>
   );
 }
- 
+
 // Jobs Section with Carousel
 function JobsSection() {
   const jobs = [
@@ -341,7 +344,7 @@ function JobsHomePage() {
   return (
     <>
       <JobsHeroSection />
-      <JobsTopPicksWithGraphSection /> 
+      <JobsTopPicksWithGraphSection />
       <JobsInvestmentInsightsSection />
       <JobsSection />
     </>

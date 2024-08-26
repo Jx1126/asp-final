@@ -1,229 +1,97 @@
-// src/components/MonthlyFinances.tsx
 
-import React, { useState } from 'react';
-import MonthlyFinanceDetails from './MonthlyFinanceDetails';
+// src/components/MonthlyFinanceDetails.tsx
+
+import React from 'react';
+import IncomeMonthly from './IncomeMonthly';
+import ExpensesMonthly from './ExpensesMonthly';
+import SummaryMonthly from './SummaryMonthly';
 import PieChart from './PieChart';
 
-interface MonthlyData {
+interface MonthlyFinanceProps {
+  data: {
     month: string;
     incomeSources: { source: string; amount: number }[];
     expenseSources: { source: string; amount: number }[];
     summary: {
-        totalIncome: number;
-        totalExpenses: number;
-        savings: number;
-        disposableIncome: number;
+      totalIncome: number;
+      totalExpenses: number;
+      savings: number;
+      disposableIncome: number;
     };
+  };
 }
 
-const monthlyData: MonthlyData[] = [
-    {
-        month: 'January 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'Febuary 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'March 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'April 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'May 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'June 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'July 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    {
-        month: 'August 2024',
-        incomeSources: [
-            { source: 'Salary', amount: 5000 },
-            { source: 'Investments', amount: 1000 },
-            { source: 'Freelancing', amount: 1184.64 },
-        ],
-        expenseSources: [
-            { source: 'Rent', amount: 800 },
-            { source: 'Groceries', amount: 300 },
-            { source: 'Utilities', amount: 200 },
-            { source: 'Entertainment', amount: 290.31 },
-        ],
-        summary: {
-            totalIncome: 7184.64,
-            totalExpenses: 1590.31,
-            savings: 1200,
-            disposableIncome: 4394.33,
-        },
-    },
-    
-];
+
+const MonthlyFinance: React.FC<MonthlyFinanceProps> = ({ data }) => {
+  const incomeLabels = data.incomeSources.map((source) => source.source);
+  const incomeValues = data.incomeSources.map((source) => source.amount);
+
+  const expenseLabels = data.expenseSources.map((source) => source.source);
+  const expenseValues = data.expenseSources.map((source) => source.amount);
+
+  const summaryLabels = ['Expenses', 'Savings', 'Disposable Income'];
+  const summaryValues = [
+    data.summary.totalExpenses,
+    data.summary.savings,
+    data.summary.disposableIncome,
+  ];
+
+  const incomeColors = ['#e07a5f', '#3d405b', '#81b29a', '#f4f1de', '#f2cc8f'];
+  const expenseColors = ['#f6bd60', '#f7ede2', '#f5cac3', '#84a59d', '#f28482'];
+  const summaryColors = ['#cdb4db', '#ffafcc', '#bde0fe', '#ffc8dd', '#a2d2ff'];
 
 
-const MonthlyFinances: React.FC = () => {
-    const [activeMonth, setActiveMonth] = useState<string | null>(null);
+  return (
+    <div className="monthly-finance-details">
+      {/* Income Table */}
+      <div className="mb-4">
+        
+        <IncomeMonthly incomeSources={data.incomeSources} />
+      </div>
 
-    const toggleMonth = (month: string) => {
-        setActiveMonth(activeMonth === month ? null : month);
-    };
+      {/* Expenses Table */}
+      <div className="mb-4">
+        
+        <ExpensesMonthly expenseSources={data.expenseSources} />
+      </div>
 
-    const activeMonthData = monthlyData.find((data) => data.month === activeMonth);
-
-    return (
-        <div className=''>
-
-            <div className="monthly-finances">
-                
-
-                <div className="month-list">
-
-                    {monthlyData.map((data) => (
-                        <div className='border-gray-300 rounded-lg mt-4 mb-4 border-2 shadow-inner'>
-                            <div key={data.month} className='text-center'>
-                                <div
-                                    className="month-button bg-gray-100 p-4 cursor-pointer font-semibold hover:bg-cyan-100 transition"
-                                    onClick={() => toggleMonth(data.month)}
-                                >
-                                    {data.month}
-                                </div>
-                                {activeMonth === data.month && activeMonthData && (
-                                    <div className="bg-white p-4">
-                                        {/* Display detailed financial information */}
-                                        <MonthlyFinanceDetails data={activeMonthData} />
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-
-                </div>
+      <div className="mb-4">
+        <SummaryMonthly month={data.month} summary={data.summary} />
+      </div>
 
 
-
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="w-full max-w-md mx-auto">
+          <PieChart
+            title="Income Distribution"
+            labels={incomeLabels}
+            data={incomeValues}
+            backgroundColors={incomeColors}
+          />
         </div>
-    );
+        <div className="w-full max-w-md mx-auto">
+          <PieChart
+            title="Expenses Distribution"
+            labels={expenseLabels}
+            data={expenseValues}
+            backgroundColors={expenseColors}
+          />
+        </div>
+        <div className="w-full max-w-md mx-auto">
+          <PieChart
+            title="Monthly Summary"
+            labels={summaryLabels}
+            data={summaryValues}
+            backgroundColors={summaryColors}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default MonthlyFinances;
+export default MonthlyFinance;
+
+
+
+

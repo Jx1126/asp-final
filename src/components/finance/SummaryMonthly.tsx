@@ -2,19 +2,19 @@
 
 import React, { useState } from 'react';
 
-interface SummaryData {
+interface SummaryMonthlyData {
   totalIncome: number;
   totalExpenses: number;
   savings: number;
   disposableIncome: number;
 }
 
-interface SummaryChartsProps {
+interface SummaryMonthlyProps {
   month: string;
-  summary: SummaryData;
+  summary: SummaryMonthlyData;
 }
 
-const SummaryCharts: React.FC<SummaryChartsProps> = ({ month, summary }) => {
+const SummaryMonthly: React.FC<SummaryMonthlyProps> = ({ month, summary }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,10 +29,6 @@ const SummaryCharts: React.FC<SummaryChartsProps> = ({ month, summary }) => {
       {isOpen && (
         <div className="summary-charts p-4 border rounded shadow">
           <h3 className="text-lg font-semibold mb-2">Summary - {month}</h3>
-
-          {/* Summary Table */}
-          
-
           <div className="mt-2 space-y-2">
             <div className="justify-between">
               <p className="font-bold">Total Income</p>
@@ -57,4 +53,4 @@ const SummaryCharts: React.FC<SummaryChartsProps> = ({ month, summary }) => {
   );
 };
 
-export default SummaryCharts;
+export default SummaryMonthly;

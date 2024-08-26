@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-interface ExpensesTableProps {
+interface ExpensesMonthlyProps {
   expenseSources: { source: string; amount: number }[];
 }
 
-const ExpensesTable: React.FC<ExpensesTableProps> = ({ expenseSources }) => {
+const ExpensesMonthly: React.FC<ExpensesMonthlyProps> = ({ expenseSources }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -40,4 +40,4 @@ const ExpensesTable: React.FC<ExpensesTableProps> = ({ expenseSources }) => {
   );
 };
 
-export default ExpensesTable;
+export default ExpensesMonthly;

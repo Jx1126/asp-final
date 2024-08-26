@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 
 // Define props interface for the Income component
-interface IncomeProps {
+interface IncomeYearlyProps {
   data: { month: string; amount: number }[]; // Array of income data for each month
 }
 
 // Define the Income component
-const Income: React.FC<IncomeProps> = ({ data }) => {
+const IncomeYearly: React.FC<IncomeYearlyProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false); // State to track whether the dropdown is open
 
   return (
@@ -20,8 +20,6 @@ const Income: React.FC<IncomeProps> = ({ data }) => {
         <span>{isOpen ? '▲' : '▼'}</span> {/* Arrow based on whether the dropdown is open */}
       </div>
       {isOpen && (
-        
-
         <div className="income-table p-4 border rounded shadow">
         <h3 className="text-lg font-semibold mb-2">Income</h3>
         <table className="min-w-full table-auto">
@@ -47,4 +45,4 @@ const Income: React.FC<IncomeProps> = ({ data }) => {
 };
 
 // Export the Income component as the default export
-export default Income;
+export default IncomeYearly;

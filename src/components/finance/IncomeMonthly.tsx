@@ -3,12 +3,12 @@
 import React, { useState } from 'react';
 
 
-interface IncomeTableProps {
+interface IncomeMonthlyProps {
   incomeSources: { source: string; amount: number }[];
 
 }
 
-const IncomeTable: React.FC<IncomeTableProps> = ({ incomeSources }) => {
+const IncomeMonthly: React.FC<IncomeMonthlyProps> = ({ incomeSources }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -46,4 +46,4 @@ const IncomeTable: React.FC<IncomeTableProps> = ({ incomeSources }) => {
   );
 };
 
-export default IncomeTable;
+export default IncomeMonthly;
