@@ -59,7 +59,7 @@ function FinanceCalendar({ budget }: Props) {
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 500 }}
+        style={{ height: '70vh', minHeight: '400px' }}
         views={["month"]}
         eventPropGetter={eventColour}
       />

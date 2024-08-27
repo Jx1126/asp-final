@@ -22,13 +22,13 @@ const Finance: React.FC = () => {
   return (
     <div>
       <FinanceHero />
-      <FloatingButton /> {/* Add the floating button */}
+      <FloatingButton />
 
       <h1 className="mt-20 mb-10 text-3xl font-bold text-center text-blue-700">Financial Calender</h1>
       <div className="mt-10 mb-20 grid gap-10">
         <div>
           <div className='flex justify-center'>
-            <div className="w-3/5">
+            <div className="sm:w-3/5">
               <FinanceCalendar budget={budget} />
             </div>
           </div>

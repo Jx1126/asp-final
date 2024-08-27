@@ -1,4 +1,3 @@
-// YearlySummaryData.tsx
 import React, { useState } from 'react';
 import YearlySummary from './YearlySummary';
 
