@@ -20,9 +20,9 @@ function BudgetInput({ onSaveBudget }: Props) {
 
   return (
     <>
-      <div className="flex justify-center">
-        <div className="w-1/3 p-10">
-          <div className="flex justify-center">
+      <div className="flex justify-center items-center flex-col">
+        <div className="w-1/3 p-10 pb-0">
+          <div className="flex justify-center gap-2 !mb-0">
             <input
               type="number"
               placeholder="Monthly Budget"
@@ -33,9 +33,9 @@ function BudgetInput({ onSaveBudget }: Props) {
               Set Monthly Budget
             </a>
 
-            {budgetSaved && <p>Monthly Budget of {budget} Set!</p>}
           </div>
         </div>
+          {budgetSaved && <p className="font-semibold text-green-600 mt-5">Monthly Budget of {budget} Set!</p>}
       </div>
     </>
   );

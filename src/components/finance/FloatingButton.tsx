@@ -11,7 +11,7 @@ const FloatingButton: React.FC = () => {
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-300"
+        className="fixed bottom-8 right-8 bg-blue-500 text-white p-4 rounded-lg skeleton shadow-lg hover:bg-blue-700 transition duration-300"
       >
         New Entry
       </button>
