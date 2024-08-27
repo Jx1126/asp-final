@@ -13,16 +13,16 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip,
 function JobsHeroSection() {
   return (
     <section className="relative w-auto h-auto">
-      <img src={jobsHero} alt="Hero image" className="w-full object-cover brightness-75" />
+      <img src={jobsHero} alt="Hero image" className="w-full h-full object-cover brightness-75" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
 
-      <div className="absolute inset-0 flex items-center ml-20">
-        <div className="text-white">
-          <h1 className="text-4xl md:text-6xl font-bold">
+      <div className="absolute inset-0 flex items-center justify-center sm:justify-start">
+        <div className="text-white px-6 sm:px-10 md:px-16">
+          <h1 className="text-3xl sm:text-5xl font-bold text-center sm:text-left">
             Investment Opportunities
           </h1>
-          <p className="text-lg mt-3 md:text-xl">
-            Find out about the bullish trends to guide your investment decisions!
+          <p className="text-base sm:text-lg md:text-xl mt-2 sm:mt-3 text-center sm:text-left">
+            Learn about bullish trends to guide your investment decisions!
           </p>
         </div>
       </div>
