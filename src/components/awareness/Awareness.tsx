@@ -9,14 +9,14 @@ import Divider from '../common/Divider';
 const AwarenessSection = () => {
   return (
     <section className="relative w-auto h-auto">
-      <img src={hero} alt="Hero image" className="w-full object-cover brightness-75" />
+      <img src={hero} alt="Hero image" className="w-full h-full object-cover brightness-75" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/85" />
 
-      <div className="absolute inset-0 flex items-center ml-20">
-        <div className="text-white">
-          <h1 className="text-4xl md:text-6xl font-bold">Introduction to Scams</h1>
-          <p className="text-lg mt-3 md:text-xl">
-            Scams come in many forms - know the risks, safeguard yourself.
+      <div className="absolute inset-0 flex items-center justify-center sm:justify-start">
+        <div className="text-white px-6 sm:px-10 md:px-16">
+          <h1 className="text-3xl sm:text-5xl font-bold text-center sm:text-left">Introduction to Scams</h1>
+          <p className="text-base sm:text-lg md:text-xl mt-2 sm:mt-3 text-center sm:text-left">
+            Scams come in many forms, safeguard yourself.
           </p>
         </div>
       </div>
