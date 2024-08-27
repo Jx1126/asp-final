@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import Slider from "react-slick"; // Import the react-slick library for the carousel
+import Slider from "react-slick";
 import jobsHero from "/jobs_hero.png?url";
 import DropdownList from "../common/DropdownList";
-import "slick-carousel/slick/slick.css"; // Import carousel styles
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'chart.js/auto'; // This is needed to properly import Chart.js when using it with React
+import 'chart.js/auto';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
@@ -13,16 +13,16 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip,
 function JobsHeroSection() {
   return (
     <section className="relative w-auto h-auto">
-      <img src={jobsHero} alt="Hero image" className="w-full object-cover brightness-75" />
+      <img src={jobsHero} alt="Hero image" className="w-full h-full object-cover brightness-75" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70" />
 
-      <div className="absolute inset-0 flex items-center ml-20">
-        <div className="text-white">
-          <h1 className="text-4xl md:text-6xl font-bold">
+      <div className="absolute inset-0 flex items-center justify-center sm:justify-start">
+        <div className="text-white px-6 sm:px-10 md:px-16">
+          <h1 className="text-3xl sm:text-5xl font-bold text-center sm:text-left">
             Investment Opportunities
           </h1>
-          <p className="text-lg mt-3 md:text-xl">
-            Find out about the bullish trends to guide your investment decisions!
+          <p className="text-base sm:text-lg md:text-xl mt-2 sm:mt-3 text-center sm:text-left">
+            Learn about bullish trends to guide your investment decisions!
           </p>
         </div>
       </div>
@@ -151,57 +151,61 @@ function JobsTopPicksWithGraphSection() {
         <p className="text-md sm:text-xl font-semibold mt-2 max-w-sm sm:max-w-md text-center">Companies and Stocks on the Rise</p>
       </div>
       
-        {/* <div className='w-2/3'> */}
-        <Slider {...settings} className="mt-10">
-          {stockData.map((stock, index) => {
-            const { change, percentageChange } = calculateChange(stock.prices);
-            const isPositive = change >= 0;
+        <div className='mx-4 sm:mx-8 md:mx-16'>
+          <Slider {...settings} className="mt-5 sm:mt-10">
+            {stockData.map((stock, index) => {
+              const { change, percentageChange } = calculateChange(stock.prices);
+              const isPositive = change >= 0;
 
-            return (
-              <div key={index} className="p-3">
-                <div className="border-4 border-slate-700 p-8 shadow-lg bg-white rounded-lg"> { }
-                  <Line
-                    data={{
-                      labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
-                      datasets: [
-                        {
-                          label: `${stock.title} Price ($)`,
-                          data: stock.prices,
-                          borderColor: 'rgba(75, 192, 192, 1)',
-                          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                          fill: true,
-                          tension: 0.1,
-                        },
-                      ],
-                    }}
-                    options={{
-                      scales: {
-                        y: {
-                          beginAtZero: false,
-                        },
-                      },
-                    }}
-                  />
-                  <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
-                  <div className="text-center mt-2 flex justify-center items-center space-x-4">
-                    <p className={`text-lg font-semibold mr-2 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
-                      Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}
-                    </p>
-                    <div className={`text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
-                      <span className="font-bold mr-2">
-                        {isPositive ? <ArrowUpIcon className="h-4 w-6" /> : <ArrowDownIcon className="h-4 w-4" />} {/* Bold icon with color */}
-                      </span>
-                      <span>
-                        ${change.toFixed(2)} ({percentageChange.toFixed(2)}%)
-                      </span>
+              return (
+                <div key={index} className="p-2 sm:p-3">
+                  <div className="border-2 sm:border-4 border-slate-700 p-4 shadow-lg bg-white rounded-lg sm:p-8">
+                    <div className="h-48 sm:h-64 md:h-80">
+                      <Line
+                        data={{
+                          labels: ["10AM", "11AM", "12PM", "1PM", "2PM", "3PM"],
+                          datasets: [
+                            {
+                              label: `${stock.title} Price ($)`,
+                              data: stock.prices,
+                              borderColor: 'rgba(75, 192, 192, 1)',
+                              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                              fill: true,
+                              tension: 0.1,
+                            },
+                          ],
+                        }}
+                        options={{
+                          responsive: true,
+                          maintainAspectRatio: false,
+                          scales: {
+                            y: {
+                              beginAtZero: false,
+                            },
+                          },
+                        }}
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold mt-4 text-center">{stock.title}</h3>
+                    <div className="text-center mt-2 flex justify-center items-center space-x-2 sm:space-x-4">
+                      <p className={`text-sm  sm:text-base md:text-lg font-semibold mr-2 ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                        Current Price: ${stock.prices[stock.prices.length - 1].toFixed(2)}
+                      </p>
+                      <div className={`text-sm  sm:text-base md:text-lg font-semibold flex items-center ${isPositive ? 'text-green-500' : 'text-red-500'}`}>
+                        <span className="font-bold mr-2">
+                          {isPositive ? <ArrowUpIcon className="h-3 w-3 sm:h-4 sm:w-4" /> : <ArrowDownIcon className="h-3 w-3 sm:h-4 sm:w-4" />}
+                        </span>
+                        <span>
+                          ${change.toFixed(2)} ({percentageChange.toFixed(2)}%)
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </Slider>
-        {/* </div> */}
+              );
+            })}
+          </Slider>
+        </div>
       
     </section>
   );

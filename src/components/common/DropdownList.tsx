@@ -29,14 +29,14 @@ function DropdownList({ items }: DropdownListProps) {
             onClick={() => toggleDropdown(index)}
             style={{ minHeight: '70px' }}
           >
-            <span className="mr-4">{item.title}</span>
+            <span className="mr-4 text-md sm:text-lg">{item.title}</span>
             <span className="ml-auto">
               {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
             </span>
           </button>
           {openIndex === index && (
             <div className="px-6 py-4 bg-gray-50 text-center">
-              <p className="text-gray-700 leading-relaxed">{item.description}</p>
+              <p className="text-gray-700 leading-relaxed text-md sm:text-lg">{item.description}</p>
             </div>
           )}
         </div>
