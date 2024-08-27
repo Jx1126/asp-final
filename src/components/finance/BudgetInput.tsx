@@ -20,22 +20,21 @@ function BudgetInput({ onSaveBudget }: Props) {
 
   return (
     <>
-      <div className="flex justify-center items-center flex-col">
-        <div className="w-1/3 p-10 pb-0">
-          <div className="flex justify-center gap-2 !mb-0">
+      <div className="flex justify-center items-center flex-col mx-5">
+        <div className="w-full max-w-xs mt-8">
+          <div className="flex items-center gap-2 flex-col md:flex-row">
             <input
               type="number"
               placeholder="Monthly Budget"
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full md:w-auto"
               onChange={handleSliderChange}
             />
-            <a className="btn btn-primary text-lg" onClick={handleButtonClick}>
+            <a className="btn btn-primary text-lg w-full md:w-auto" onClick={handleButtonClick}>
               Set Monthly Budget
             </a>
-
           </div>
         </div>
-          {budgetSaved && <p className="font-semibold text-green-600 mt-5">Monthly Budget of {budget} Set!</p>}
+        {budgetSaved && <p className="font-semibold text-green-600 mt-5">Monthly Budget of {budget} Set!</p>}
       </div>
     </>
   );
