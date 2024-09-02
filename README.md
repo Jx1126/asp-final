@@ -37,6 +37,7 @@ Before you begin, please ensure that you meet the following prerequisites:
 
 - You have installed Node.JS.
 - You have installed NPM.
+- You have installed SQLite
 - You have a Window/Linux/Mac machine.
 
 ## Languages
@@ -85,11 +86,20 @@ To contribute to Code to PDF Converter, follow these steps:
 Alternatively, see the GitHub documentation on [creating a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 ## Developing FinanceForge
+
 1. Run the CLI tool to scan your template files for classes and build your CSS.
 ```
 npm run css
 ```
 2. Open a separate terminal and run the following:
+```
+npm run rebuild_database
+```
+3. Open a separate terminal and run the following:
+```
+npm run server
+```
+4. Open a separate terminal and run the following:
 ```
 npm run dev
 ```
