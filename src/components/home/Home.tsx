@@ -19,9 +19,9 @@ const HeroSection = () => {
             Empowering you with financial knowledge.
           </p>
           <div className="flex justify-center sm:justify-start">
-            <button className="btn btn-primary mt-4 sm:mt-5 px-6 btn-wide !font-semibold text-base sm:text-lg md:text-xl">
-              Get Started
-            </button>
+            <a href="#features" className="btn btn-primary mt-4 sm:mt-5 px-6 btn-wide !font-semibold text-base sm:text-lg md:text-xl">
+              Features
+            </a>
           </div>
         </div>
       </div>
@@ -36,16 +36,19 @@ const FeaturesSection = () => {
       title: "Track your Income and Expenses",
       description: "Easily record and visualize your income and expenses. Get clear insight into your spending habits and savings with graphs.",
       image: detail1,
+      link: "finance-manager"
     },
     {
       title: "Find out ways to build your wealth",
       description: "Get top insights from our analyst and key recommendation on opportunities to build your wealth.",
       image: detail2,
+      link: "jobs-wealth"
     },
     {
       title: "Protect yourself",
       description: "Find out more about common scams and use our link checker to safeguard yourself online.",
       image: detail3,
+      link: "scam-awareness"
     }
   ];
 
