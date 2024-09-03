@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import 'chart.js/auto';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
+import JobApplicationModal from './JobApplicationModal';
 
 // Hero Section
 function JobsHeroSection() {
@@ -211,8 +212,6 @@ function JobsTopPicksWithGraphSection() {
   );
 }
 
-// import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-
 function JobsInvestmentInsightsSection() {
   const insights = [
     {
@@ -315,6 +314,9 @@ function JobsSection() {
     ]
   };
 
+  const [selectedJob, setSelectedJob] = useState<{ title: string; image: string } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="my-20">
       <div className="flex flex-col items-center justify-center mb-5 relative z-20">
@@ -332,13 +334,21 @@ function JobsSection() {
               />
               <h3 className="text-xl font-semibold mt-2">{job.title}</h3>
               <p className="mt-2">{job.description}</p>
-              <button className="btn btn-primary mt-5 w-full">
+              <button className="btn btn-primary mt-5 w-full" onClick={() => { setSelectedJob(job); setIsModalOpen(true); }}>
                 Apply
               </button>
             </div>
           </div>
         ))}
       </Slider>
+
+      {selectedJob && (
+        <JobApplicationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={selectedJob.title}
+        />
+      )}
     </section>
   );
 }
