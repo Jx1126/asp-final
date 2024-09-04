@@ -3,6 +3,7 @@ import React from 'react';
 
 import ScamCard from './ScamCard';
 import DetailCard from './DetailCard';
+import LinkChecker from './LinkChecker';
 import DropdownList from '../common/DropdownList';
 import Divider from '../common/Divider';
 
@@ -33,16 +34,7 @@ const LinkCheckerSection = () => {
           If a link seems suspicious, use our link checker to verify its legitimacy.
         </p>
     
-        <div className="flex items-center mt-5">
-          <input
-            type="text"
-            placeholder="Link"
-            className="w-full md:w-96 px-4 py-2 border rounded-l-lg focus:outline-1 focus:outline-blue-400 shadow-sm"
-          />
-          <button className="bg-blue-700 text-white px-8 py-2 rounded-r-lg shadow-lg hover:bg-blue-800 focus:outline-none ease-in-out hover:skeleton hover:rounded-none hover:rounded-tr-lg hover:rounded-br-lg transition-all">
-            Check
-          </button>
-        </div>
+        <LinkChecker />
       </div>
     </section>
   );
