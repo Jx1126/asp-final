@@ -1,4 +1,21 @@
-const LinkChecker = () => {
+import { useState } from 'react';
+
+const LinkChecker:React.FC = () => {
+  const [link, setLink] = useState('');
+  const [result, setResult] = useState('');
+
+  const checkLink = () => {
+    const protocolCheck1 = /^(http|https):\/\//;
+    const protocolCheck2 = /^https:\/\//;
+    if (!protocolCheck1.test(link)) {
+      setResult(`Error - The link ${link} does not have a protocol. Please add http:// or https://`);
+      if (!protocolCheck2.test(link)) {
+        setResult(`Warning - The link ${link} does not use HTTPS. It may not be secure.`);
+      }
+      return;
+    }
+  }
+
   return (
     <div className="flex items-center mt-5">
       <input
