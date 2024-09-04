@@ -102,7 +102,7 @@ app.get("/", (req, res) => {
 
 // Start express server
 app
-  .listen(3000, () => {
+  .listen(3001, () => {
     console.log("Listening on port 3001");
   })
   .setTimeout(500000);
