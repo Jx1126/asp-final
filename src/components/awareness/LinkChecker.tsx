@@ -5,8 +5,8 @@ const LinkChecker:React.FC = () => {
   const [result, setResult] = useState('');
 
   const checkLink = () => {
-    const protocolCheck1 = /^(http|https):\/\//;
-    const protocolCheck2 = /^https:\/\//;
+    const protocolCheck1 = /^(http|https):\/\//i;
+    const protocolCheck2 = /^https:\/\//i;
     if (!protocolCheck1.test(link)) {
       setResult(`Error - The link ${link} does not have a protocol. Please add http:// or https://`);
       if (!protocolCheck2.test(link)) {
@@ -14,6 +14,14 @@ const LinkChecker:React.FC = () => {
       }
       return;
     }
+
+    const tldCheck = /\.(tk|buzz|xyz|ml|ga|cf|top||info|gq|icu|wang|cn|host|us)$/i
+    if (tldCheck.test(link)) {
+      setResult(`Warning - The link ${link} uses TID often associated with spam or malicious sites.`);
+      return;
+    }
+
+    
   }
 
   return (
