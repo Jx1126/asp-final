@@ -1,7 +1,7 @@
 import Database from "better-sqlite3";
 import { eachDayOfInterval } from "date-fns";
 
-const db = new Database("app.db");
+const db = new Database("server/app.db");
 
 db.exec(`DROP TABLE IF EXISTS transactions`);
 
