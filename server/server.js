@@ -2,7 +2,7 @@ import Database from "better-sqlite3";
 import express from "express";
 import cors from "cors";
 
-const db = new Database("./app.db");
+const db = new Database("server/app.db");
 
 const app = express();
 app.use(express.json());
