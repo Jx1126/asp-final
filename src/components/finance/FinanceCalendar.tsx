@@ -2,43 +2,49 @@ import { Calendar, momentLocalizer, Event } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { startOfYear, endOfYear, eachDayOfInterval } from "date-fns";
+import { useState, useEffect } from "react";
 
 const localizer = momentLocalizer(moment);
+
+const URL = "http://localhost:3001";
 
 interface Props {
   budget: number;
 }
 
 function FinanceCalendar({ budget }: Props) {
-  function getYearArray(date) {
-    let yearStart = startOfYear(todayDate);
-    let yearEnd = endOfYear(todayDate);
+  const [events, setEvents] = useState<Event[]>([]);
 
-    let currentYearArray = eachDayOfInterval({
-      start: yearStart,
-      end: yearEnd,
-    });
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        let allDates = await getAllDates();
 
-    return currentYearArray;
-  }
+        const newEvents = await Promise.all(
+          allDates.map(async (date) => {
+            let dateString = date.date;
+            let dateObject = new Date(dateString);
+            let dateExpense = await getDateType(dateString, "Expense");
+            return {
+              title: budget - dateExpense,
+              start: dateObject,
+              end: dateObject,
+              allDay: false,
+            };
+          })
+        );
 
-  function generateEventArray(dateRange) {
-    let eventArray = [];
-    for (let i = 0; i < dateRange.length; i++) {
-      let day = {
-        title: Math.floor(
-          (budget * 12) / dateRange.length - Math.floor(Math.random() * 1000)
-        ),
-        start: dateRange[i],
-        end: dateRange[i],
-        allDay: false,
-      };
-      eventArray.push(day);
-    }
-    return eventArray;
-  }
+        setEvents(newEvents);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+        // Handle the error appropriately, e.g., show an error message to the user
+      }
+    };
 
-  function eventColour(event) {
+    fetchEvents();
+  }, [budget]); // Re-fetch events when the budget changes
+
+  function eventColour(event: Event) {
     let backgroundColor;
     if (event.title < 0) {
       backgroundColor = "#f28482";
@@ -48,9 +54,19 @@ function FinanceCalendar({ budget }: Props) {
     return { style: { backgroundColor } };
   }
 
-  let todayDate = new Date();
-  let yearArray = getYearArray(todayDate);
-  let events = generateEventArray(yearArray);
+  async function getDateType(date: string, type: string) {
+    let urlString = encodeURI(`${URL}/datetype?date=${date}&type=${type}`);
+    let data = await fetch(urlString);
+    let response = await data.json();
+    return response["SUM(amount)"] || 0; // Handle potential null values
+  }
+
+  async function getAllDates() {
+    let urlString = `${URL}/alldates`;
+    let data = await fetch(urlString);
+    let response = await data.json();
+    return response;
+  }
 
   return (
     <>
@@ -59,7 +75,7 @@ function FinanceCalendar({ budget }: Props) {
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: '70vh', minHeight: '400px' }}
+        style={{ height: "70vh", minHeight: "400px" }}
         views={["month"]}
         eventPropGetter={eventColour}
       />
