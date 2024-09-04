@@ -17,11 +17,7 @@
   - [Prerequisite](#prerequisite)
   - [Languages](#languages)
 - [Usage](#usage)
-  - [Installing FinanceForge](#installing-financeforge)
   - [Using FinanceForge](#using-financeforge)
-- [Development](#development)
-  - [Contributing to FinanceForge](#contributing-to-financeforge)
-  - [Developing FinanceForge](#developing-financeforge)
 - [Acknowledgements](#acknowledgements)
   - [External Sources:](#external-sources)
   - [Tools:](#tools)
@@ -37,72 +33,49 @@ Before you begin, please ensure that you meet the following prerequisites:
 
 - You have installed Node.JS.
 - You have installed NPM.
-- You have installed SQLite
+- You have installed SQLite3.
 - You have a Window/Linux/Mac machine.
 
 ## Languages
 
-1. CSS
+1. Typescript
+2. Javascript
+3. HTML
+4. CSS
 
 <p align="right"><a href="#">Jump to top</a></p>
 <br>
 
 # Usage
 
-## Installing FinanceForge
-
-To install FinanceForge, follow these steps:
-
-- Navigate to the project directory.
-- Run the following command to install the required dependancies:
-
-```
-npm install
-```
-
 ## Using FinanceForge
 
 To use the FinanceForge, follow these steps:
-
-1.  
-
-<p align="right"><a href="#">Jump to top</a></p>
-
-<br>
-
-# Development
-
-## Contributing to FinanceForge
-
-To contribute to Code to PDF Converter, follow these steps:
-
-1. Fork this repository
-2. Create a branch: `git checkout -b <branch_name>`
-3. Make your changes and stage them: `git stage .`
-4. Commit the changes: `git commit -m '<commit_message>'`
-5. Push to repository: `git push`
-6. Create the pull request
-
-Alternatively, see the GitHub documentation on [creating a pull request](https://help.github.com/articles/creating-a-pull-request/).
-
-## Developing FinanceForge
-
-1. Run the CLI tool to scan your template files for classes and build your CSS.
+1. **Set Up the Database and Server**<br>
+   In a separate terminal, run the following command to build the database and start the server:
+```bash
+npm run start
 ```
-npm run css
-```
-2. Open a separate terminal and run the following:
-```
-npm run rebuild_database
-```
-3. Open a separate terminal and run the following:
-```
-npm run server
-```
-4. Open a separate terminal and run the following:
+2. **Launch the Development Server**<br>
+   Once you see `Listening on Port 3001`, run the following command to host the webpage:
 ```
 npm run dev
 ```
+3. **View the Application**<br>
+   Open your browser and navigate to `http://localhost:5173/` to see the page.
+
+<br>
+
+Optional: **Build your CSS  (For Developers)**<br>
+   Run the CLI tool to scan your template files for classes when building your CSS.
+```bash
+npm run css
+```
+
+
+
+
+<br>
 
 <p align="right"><a href="#">Jump to top</a></p>
 
