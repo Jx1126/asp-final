@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "css": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css --watch",
     "server": "node server/server.js",
-    "rebuild_database": "node server/dataGenerator.js"
+    "rebuild_database": "node server/dataGenerator.js",
+    "start": "npm run rebuild_database && npm run server "
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
