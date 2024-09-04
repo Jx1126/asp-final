@@ -21,7 +21,14 @@ const LinkChecker:React.FC = () => {
       return;
     }
 
-    
+    const urlCheck = /^https:\/\/([^/]+)/i
+    const url = link.match(urlCheck);
+    if (url && url[1].length > 50) {
+      setResult(`Warning - The link ${link} has a long URL. It may be a phishing link.`);
+      return;
+    }
+
+    setResult(`Success - The link ${link} appears to be okay based on our basic checks.`);
   }
 
   return (
