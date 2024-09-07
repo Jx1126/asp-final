@@ -57,7 +57,7 @@ To use the FinanceForge, follow these steps:
 npm run start
 ```
 2. **Launch the Development Server**<br>
-   Once you see `Listening on Port 3001`, run the following command to host the webpage:
+   Once you see `Listening on Port 3001`, open a new terminal and run the following command to host the webpage:
 ```bash
 npm run dev
 ```
