@@ -48,12 +48,12 @@ npm install
 ```bash
 npm run start
 ```
-1. **Launch the Development Server**<br>
+3. **Launch the Development Server**<br>
    Once you see `Listening on Port 3001`, open a new terminal and run the following command to host the webpage:
 ```bash
 npm run dev
 ```
-1. **View the Application**<br>
+4. **View the Application**<br>
    Open your browser and navigate to `http://localhost:5173/` to see the page.
 
 <br>
