@@ -254,17 +254,17 @@ function JobsSection() {
     {
       title: "Business Consulting",
       description: "Offer expertise in business strategy, finance, or management.",
-      image: "/home_hero.png",
+      image: "/consult.png",
     },
     {
       title: "Dropshipping",
       description: "Selling products online without holding inventory.",
-      image: "/home_hero.png",
+      image: "/dropshipping.png",
     },
     {
       title: "Transcription",
       description: "Converting audio or video recordings into written text.",
-      image: "/home_hero.png",
+      image: "/transcript.png",
     },
   ];
 
