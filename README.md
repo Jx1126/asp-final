@@ -38,17 +38,22 @@ Before you begin, please ensure that you meet the following prerequisites:
 ## Using FinanceForge
 
 To use the FinanceForge, follow these steps:
-1. **Set Up the Database and Server**<br>
+1. **Install the required libraries**<br>
+   Open a termanal, run the following command to automatically install all the required dependencies:
+```bash
+npm install
+```
+2. **Set Up the Database and Server**<br>
    In a separate terminal, run the following command to build the database and start the server:
 ```bash
 npm run start
 ```
-2. **Launch the Development Server**<br>
+1. **Launch the Development Server**<br>
    Once you see `Listening on Port 3001`, open a new terminal and run the following command to host the webpage:
 ```bash
 npm run dev
 ```
-3. **View the Application**<br>
+1. **View the Application**<br>
    Open your browser and navigate to `http://localhost:5173/` to see the page.
 
 <br>
