@@ -11,21 +11,12 @@
   </p>
 </div>
 
-# Table of Contents
+## Table of Contents
 - [Table of Contents](#table-of-contents)
-- [About](#about)
-  - [Prerequisite](#prerequisite)
-  - [Languages](#languages)
-- [Usage](#usage)
-  - [Using FinanceForge](#using-financeforge)
-- [Acknowledgements](#acknowledgements)
-  - [External Sources:](#external-sources)
-  - [Tools:](#tools)
+- [Prerequisite](#prerequisite)
+- [Languages](#languages)
+- [Using FinanceForge](#using-financeforge)
 
-<p align="right"><a href="#">Jump to top</a></p>
-<br>
-
-# About
 
 ## Prerequisite
 
@@ -38,15 +29,11 @@ Before you begin, please ensure that you meet the following prerequisites:
 
 ## Languages
 
-1. Typescript
+1. TSX (Typescript with JSX)
 2. Javascript
 3. HTML
 4. CSS
 
-<p align="right"><a href="#">Jump to top</a></p>
-<br>
-
-# Usage
 
 ## Using FinanceForge
 
@@ -72,27 +59,6 @@ Optional: **Build your CSS  (For Developers)**<br>
 npm run css
 ```
 
-
-
-
 <br>
-
-<p align="right"><a href="#">Jump to top</a></p>
-
-# Acknowledgements
-## External Sources:
-- [`Node.JS`](https://nodejs.org/en) - Javascript runtime environment
-- [`NPM`](https://www.npmjs.com/) - Package manager
-- [`TailwindCSS`](https://tailwindcss.com/) - CSS framework
-- [`DaisyUI`](https://daisyui.com/) - Component library for TailwindCSS
-- [`Vite`](https://vitejs.dev/) - Local development server
-- [`React`](https://react.dev/) - Front-end Javascript library
-- [`Typescript`](https://www.typescriptlang.org/) - High-level programming language
-
-## Tools:
-- [`GitHub`](https://github.com/) - Developer platform.
-- [`Photoshop`](https://www.adobe.com/sg/products/photoshop.html) - Raster graphics editor.
-- [`Visual Studio Code`](https://code.visualstudio.com/) - Source-code editor。
-- [``]() - 
 
 <p align="right"><a href="#">Jump to top</a></p>
